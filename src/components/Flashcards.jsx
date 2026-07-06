@@ -126,6 +126,7 @@ function Flashcards({ deck, onBack }) {
           </div>
           <div className={styles.slide} style={{ width: stageWidth }}>
             <CardFace
+              key={card.id}
               card={card}
               flipped={flipped}
               onClick={() => setFlipped((f) => !f)}
