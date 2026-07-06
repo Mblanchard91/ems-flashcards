@@ -53,7 +53,10 @@
   align-items: center;
   justify-content: center;
   perspective: 1400px;
-  touch-action: pan-y;
+  /* Nothing in this screen needs to scroll, so the browser shouldn't try —
+     letting it claim vertical pans here is what causes a clumsy swipe to
+     scroll the page instead of navigating the card. */
+  touch-action: none;
   min-height: 320px;
 }
 
