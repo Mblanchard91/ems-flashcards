@@ -47,23 +47,33 @@
   transition: width 0.3s ease;
 }
 
-.cardStage {
+.stage {
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1400px;
+  position: relative;
+  overflow: hidden;
   /* Nothing in this screen needs to scroll, so the browser shouldn't try —
      letting it claim vertical pans here is what causes a clumsy swipe to
      scroll the page instead of navigating the card. */
   touch-action: none;
   min-height: 320px;
+  max-height: 420px;
 }
 
-.cardOuter {
-  width: 100%;
+.track {
+  display: flex;
   height: 100%;
-  max-height: 420px;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+  box-sizing: border-box;
+  padding: 0 4px;
 }
 
 .cardInner {
