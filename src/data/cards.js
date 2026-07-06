@@ -1,0 +1,196 @@
+// Full EMS abbreviation + mnemonic flashcard dataset.
+// type: "abbreviation" | "mnemonic" drives the "always display mnemonics
+// in order" behavior (see utils/deck.js) instead of parsing term text.
+// focus: true => counted in the "focus subset only" toggle on the home screen.
+
+const abbreviationCards = [
+  // General & Documentation
+  { id: 1, term: "Pt", definition: "patient", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 2, term: "X", definition: "times", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 3, term: "y/o", definition: "years old", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 4, term: "c̄", definition: "with", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 5, term: "s̄", definition: "without", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 6, term: "ā", definition: "before", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 7, term: "p̄", definition: "after", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 8, term: "q", definition: "every", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 9, term: "DOB", definition: "date of birth", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 10, term: "↑", definition: "increase", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 11, term: "↓", definition: "decrease", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 12, term: "Wt", definition: "weight", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 13, term: "Ht", definition: "height", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 14, term: "SS#", definition: "social security number", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 15, term: "M", definition: "male", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 16, term: "F", definition: "female", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 17, term: "Hx", definition: "history", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 18, term: "PPE", definition: "personal protective equipment", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 19, term: "PE", definition: "pulmonary embolism or physical exam", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 20, term: "R/O", definition: "rule out", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 21, term: "Tx", definition: "treatment", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 22, term: "-", definition: "minus", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 23, term: "+", definition: "plus", focus: false, category: "General & Documentation", type: "abbreviation" },
+  { id: 24, term: "R or RT", definition: "right", focus: true, category: "General & Documentation", type: "abbreviation" },
+  { id: 25, term: "L or LT", definition: "left", focus: true, category: "General & Documentation", type: "abbreviation" },
+
+  // Vitals & Assessment
+  { id: 26, term: "HTN", definition: "hypertension", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 27, term: "BS", definition: "blood sugar or breath sounds", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 28, term: "O2", definition: "oxygen", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 29, term: "Lpm", definition: "liters per minute", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 30, term: "EPI", definition: "epinephrine", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 31, term: "LLQ", definition: "left lower quadrant", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 32, term: "LUQ", definition: "left upper quadrant", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 33, term: "RLQ", definition: "right lower quadrant", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 34, term: "RUQ", definition: "right upper quadrant", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 35, term: "RAS", definition: "reticular activating system (alert system-consciousness)", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 36, term: "A/O", definition: "alert & oriented", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 37, term: "Abd", definition: "abdomen or abdominal", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 38, term: "CNS", definition: "central nervous system", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 39, term: "c/o", definition: "complaints of", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 40, term: "CC", definition: "chief complaint", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 41, term: "Etoh", definition: "ethanol/alcohol", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 42, term: "P", definition: "pulse", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 43, term: "R", definition: "respirations", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 44, term: "BP", definition: "blood pressure", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 45, term: "VS", definition: "vital signs", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 46, term: "LOC", definition: "level of consciousness", focus: true, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 47, term: "Stat", definition: "now or immediately", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 48, term: "Δ", definition: "change", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+  { id: 49, term: "ø", definition: "none", focus: false, category: "Vitals & Assessment", type: "abbreviation" },
+
+  // Equipment & Scene
+  { id: 50, term: "kg", definition: "kilogram", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 51, term: "#", definition: "number", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 52, term: "LSB", definition: "long spine board", focus: true, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 53, term: "FROM", definition: "full range of motion", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 54, term: ">", definition: "greater than", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 55, term: "<", definition: "less than", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 56, term: "NC", definition: "nasal cannula", focus: true, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 57, term: "OPA", definition: "oropharyngeal airway", focus: true, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 58, term: "NPA", definition: "nasopharyngeal airway", focus: true, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 59, term: "MVA", definition: "motor vehicle accident", focus: true, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 60, term: "MVC", definition: "motor vehicle collision", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 61, term: "PCR", definition: "patient care report", focus: true, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 62, term: "NKA", definition: "no known allergies", focus: true, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 63, term: "DKA", definition: "diabetic ketoacidosis", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+  { id: 64, term: "AMA", definition: "against medical advice", focus: false, category: "Equipment & Scene", type: "abbreviation" },
+
+  // Medical Conditions
+  { id: 65, term: "PTSD", definition: "post-traumatic stress disorder", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 66, term: "STEMI", definition: "ST-elevation myocardial infarction", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 67, term: "NSTEMI", definition: "non-ST-elevation myocardial infarction", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 68, term: "MI", definition: "myocardial infarction", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 69, term: "CP", definition: "chest pain", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 70, term: "COPD", definition: "chronic obstructive pulmonary disorder", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 71, term: "CHF", definition: "congestive heart failure", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 72, term: "ARDS", definition: "acute respiratory distress syndrome", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 73, term: "IDDM", definition: "insulin dependent diabetes mellitus", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 74, term: "NIDDM", definition: "non-insulin dependent diabetes mellitus", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 75, term: "DOE", definition: "dyspnea on exertion", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 76, term: "CAD", definition: "coronary artery disease", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 77, term: "H/A", definition: "headache", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 78, term: "N/V", definition: "nausea & vomiting", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 79, term: "CSF", definition: "cerebrospinal fluid", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 80, term: "ICP", definition: "intracranial pressure", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 81, term: "DAI", definition: "diffuse axonal injury", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 82, term: "GCS", definition: "glasgow coma scale", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 83, term: "BSA", definition: "body surface area", focus: true, category: "Medical Conditions", type: "abbreviation" },
+  { id: 84, term: "ml", definition: "milliliter (same as cc)", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 85, term: "L", definition: "liter", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 86, term: "%", definition: "per cent", focus: false, category: "Medical Conditions", type: "abbreviation" },
+  { id: 87, term: "lb", definition: "pound", focus: false, category: "Medical Conditions", type: "abbreviation" },
+
+  // Medications & Routes
+  { id: 88, term: "NTG", definition: "nitroglycerin", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 89, term: "ASA", definition: "aspirin", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 90, term: "PCN", definition: "penicillin", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 91, term: "PRN", definition: "as needed", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 92, term: "BID", definition: "twice a day", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 93, term: "IM", definition: "intramuscular", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 94, term: "PO", definition: "by mouth", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 95, term: "SL", definition: "sublingual", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 96, term: "Subq", definition: "subcutaneous", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 97, term: "IN", definition: "intranasal", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 98, term: "IO", definition: "intraosseous", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 99, term: "MDI", definition: "meter dose inhaler", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 100, term: "SVN", definition: "small volume nebulizer", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 101, term: "cc", definition: "cubic centimeter (same as ml)", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 102, term: "SOB", definition: "shortness of breath", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 103, term: "JVD", definition: "jugular vein distention", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 104, term: "PTA", definition: "prior to arrival", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 105, term: "ETA", definition: "estimated time of arrival", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 106, term: "Vfib", definition: "ventricular fibrillation", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 107, term: "Vtach", definition: "ventricular tachycardia", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 108, term: "PEA", definition: "pulseless electrical activity", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 109, term: "CVA", definition: "cerebrovascular accident", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 110, term: "TIA", definition: "transient ischemic attack", focus: false, category: "Medications & Routes", type: "abbreviation" },
+  { id: 111, term: "TBI", definition: "traumatic brain injury", focus: true, category: "Medications & Routes", type: "abbreviation" },
+
+  // Trauma & Scene
+  { id: 112, term: "MOI", definition: "mechanism of injury", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 113, term: "NOI", definition: "nature of illness", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 114, term: "S/S", definition: "signs & symptoms", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 115, term: "GSW", definition: "gunshot wound", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 116, term: "PMH", definition: "past medical history", focus: false, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 117, term: "SpO2", definition: "pulse ox or O2 saturation", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 118, term: "CO2", definition: "carbon dioxide", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+];
+
+const mnemonicCards = [
+  // SAMPLE
+  { id: 200, term: "In SAMPLE, what does S stand for?", definition: "Signs & Symptoms", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
+  { id: 201, term: "In SAMPLE, what does A stand for?", definition: "Allergies", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
+  { id: 202, term: "In SAMPLE, what does M stand for?", definition: "Medications", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
+  { id: 203, term: "In SAMPLE, what does P stand for?", definition: "Past Pertinent Medical History", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
+  { id: 204, term: "In SAMPLE, what does L stand for?", definition: "Last Oral Intake", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
+  { id: 205, term: "In SAMPLE, what does E stand for?", definition: "Events leading to", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
+
+  // OPQRST
+  { id: 210, term: "In OPQRST, what does O stand for?", definition: "Onset", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "OPQRST" },
+  { id: 211, term: "In OPQRST, what does P stand for?", definition: "Position/Palliation/Provocation", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "OPQRST" },
+  { id: 212, term: "In OPQRST, what does Q stand for?", definition: "Quality", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "OPQRST" },
+  { id: 213, term: "In OPQRST, what does R stand for?", definition: "Radiation", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "OPQRST" },
+  { id: 214, term: "In OPQRST, what does S stand for?", definition: "Severity", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "OPQRST" },
+  { id: 215, term: "In OPQRST, what does T stand for?", definition: "Time", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "OPQRST" },
+
+  // BE FAST
+  { id: 220, term: "In BE FAST, what does B stand for?", definition: "Balance", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "BE FAST" },
+  { id: 221, term: "In BE FAST, what does E stand for?", definition: "Eyes", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "BE FAST" },
+  { id: 222, term: "In BE FAST, what does F stand for?", definition: "Face", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "BE FAST" },
+  { id: 223, term: "In BE FAST, what does A stand for?", definition: "Arms", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "BE FAST" },
+  { id: 224, term: "In BE FAST, what does S stand for?", definition: "Speech", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "BE FAST" },
+  { id: 225, term: "In BE FAST, what does T stand for?", definition: "Time", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "BE FAST" },
+
+  // AVPU
+  { id: 230, term: "In AVPU, what does A stand for?", definition: "Alert", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "AVPU" },
+  { id: 231, term: "In AVPU, what does V stand for?", definition: "Verbal", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "AVPU" },
+  { id: 232, term: "In AVPU, what does P stand for?", definition: "Painful", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "AVPU" },
+  { id: 233, term: "In AVPU, what does U stand for?", definition: "Unresponsive", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "AVPU" },
+
+  // DCAP-BTLS
+  { id: 240, term: "In DCAP-BTLS, what does D stand for?", definition: "Deformity", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 241, term: "In DCAP-BTLS, what does C stand for?", definition: "Contusion", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 242, term: "In DCAP-BTLS, what does A stand for?", definition: "Abrasion", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 243, term: "In DCAP-BTLS, what does P stand for?", definition: "Puncture", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 244, term: "In DCAP-BTLS, what does B stand for?", definition: "Burns", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 245, term: "In DCAP-BTLS, what does T stand for?", definition: "Tenderness", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 246, term: "In DCAP-BTLS, what does L stand for?", definition: "Lacerations", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 247, term: "In DCAP-BTLS, what does S stand for?", definition: "Swelling", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+
+  // APGAR — note two A's
+  { id: 250, term: "In APGAR, what does the first A stand for?", definition: "Appearance", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
+  { id: 251, term: "In APGAR, what does P stand for?", definition: "Pulse", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
+  { id: 252, term: "In APGAR, what does G stand for?", definition: "Grimace", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
+  { id: 253, term: "In APGAR, what does the second A stand for?", definition: "Activity", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
+  { id: 254, term: "In APGAR, what does R stand for?", definition: "Respirations", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
+
+  // PEARL
+  { id: 260, term: "In PEARL, what does P stand for?", definition: "Pupils", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
+  { id: 261, term: "In PEARL, what does E stand for?", definition: "Equal", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
+  { id: 262, term: "In PEARL, what does A stand for?", definition: "And", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
+  { id: 263, term: "In PEARL, what does R stand for?", definition: "React", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
+  { id: 264, term: "In PEARL, what does L stand for?", definition: "Light", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
+];
+
+const cards = [...abbreviationCards, ...mnemonicCards];
+
+export { cards, abbreviationCards, mnemonicCards };

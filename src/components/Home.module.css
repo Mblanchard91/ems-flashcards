@@ -1,0 +1,84 @@
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 40px;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  margin-bottom: 32px;
+}
+
+.settingsCard {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 8px 20px;
+  margin-bottom: 20px;
+}
+
+.settingsCard > label + label {
+  border-top: 1px solid var(--color-border);
+}
+
+.countBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+.countBadge strong {
+  font-size: 1.15rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.actions .btn {
+  width: 100%;
+  font-size: 1.05rem;
+}
