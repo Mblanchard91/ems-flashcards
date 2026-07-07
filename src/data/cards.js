@@ -139,7 +139,7 @@ const mnemonicCards = [
   // SAMPLE
   { id: 200, term: "In SAMPLE, what does S stand for?", definition: "Signs & Symptoms", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
   { id: 201, term: "In SAMPLE, what does A stand for?", definition: "Allergies", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
-  { id: 202, term: "In SAMPLE, what does M stand for?", definition: "Medications", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
+  { id: 202, term: "In SAMPLE, what does M stand for?", definition: "Medications", synonyms: ["Medication"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
   { id: 203, term: "In SAMPLE, what does P stand for?", definition: "Past Pertinent Medical History", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
   { id: 204, term: "In SAMPLE, what does L stand for?", definition: "Last Oral Intake", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
   { id: 205, term: "In SAMPLE, what does E stand for?", definition: "Events leading to", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "SAMPLE" },
