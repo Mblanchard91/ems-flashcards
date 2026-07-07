@@ -111,7 +111,7 @@ const abbreviationCards = [
   { id: 96, term: "Subq", definition: "subcutaneous", focus: false, category: "Medications & Routes", type: "abbreviation" },
   { id: 97, term: "IN", definition: "intranasal", focus: false, category: "Medications & Routes", type: "abbreviation" },
   { id: 98, term: "IO", definition: "intraosseous", focus: false, category: "Medications & Routes", type: "abbreviation" },
-  { id: 99, term: "MDI", definition: "meter dose inhaler", focus: true, category: "Medications & Routes", type: "abbreviation" },
+  { id: 99, term: "MDI", definition: "meter dose inhaler", synonyms: ["metered dose inhaler"], focus: true, category: "Medications & Routes", type: "abbreviation" },
   { id: 100, term: "SVN", definition: "small volume nebulizer", focus: true, category: "Medications & Routes", type: "abbreviation" },
   { id: 101, term: "cc", definition: "cubic centimeter (same as ml)", focus: false, category: "Medications & Routes", type: "abbreviation" },
   { id: 102, term: "SOB", definition: "shortness of breath", focus: false, category: "Medications & Routes", type: "abbreviation" },
@@ -129,9 +129,9 @@ const abbreviationCards = [
   { id: 112, term: "MOI", definition: "mechanism of injury", focus: true, category: "Trauma & Scene", type: "abbreviation" },
   { id: 113, term: "NOI", definition: "nature of illness", focus: true, category: "Trauma & Scene", type: "abbreviation" },
   { id: 114, term: "S/S", definition: "signs & symptoms", focus: true, category: "Trauma & Scene", type: "abbreviation" },
-  { id: 115, term: "GSW", definition: "gunshot wound", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 115, term: "GSW", definition: "gunshot wound", synonyms: ["gun shot wound"], focus: true, category: "Trauma & Scene", type: "abbreviation" },
   { id: 116, term: "PMH", definition: "past medical history", focus: false, category: "Trauma & Scene", type: "abbreviation" },
-  { id: 117, term: "SpO2", definition: "pulse ox or O2 saturation", focus: true, category: "Trauma & Scene", type: "abbreviation" },
+  { id: 117, term: "SpO2", definition: "pulse ox or O2 saturation", synonyms: ["pulse oxygen"], focus: true, category: "Trauma & Scene", type: "abbreviation" },
   { id: 118, term: "CO2", definition: "carbon dioxide", focus: true, category: "Trauma & Scene", type: "abbreviation" },
 ];
 

@@ -1,40 +1,71 @@
-// Some definitions are compound ("blood sugar or breath sounds") or carry a
-// parenthetical aside ("milliliter (same as cc)"). Typing the full string
-// verbatim isn't realistic, so accept the whole definition, either half of an
-// "or"-joined definition, and the definition with any parenthetical stripped.
+// Definitions can be compound in a few ways, and each needs different
+// handling when checking a typed answer:
+//  - "or"-joined alternatives ("blood sugar or breath sounds") — either
+//    half alone is accepted.
+//  - "/"-joined alternatives ("Position/Palliation/Provocation") — same
+//    idea, each piece alone is accepted.
+//  - "/" (or "&") used as an informal stand-in for "and" ("signs/symptoms"
+//    typed for a definition stored as "signs & symptoms") — treated as
+//    equivalent to "and", not split apart, since neither half alone is a
+//    complete answer.
+//  - a parenthetical aside ("milliliter (same as cc)") — stripped and also
+//    accepted on its own.
+//
+// "/" is ambiguous between "alternatives" and "informal and", so both
+// readings are accepted: each individual piece around a "/" or "or", AND
+// the whole phrase with "/"/"&" read as "and".
+//
+// Splitting must happen on the raw (pre-normalize) text — normalize()
+// converts "/" and "&" to "and", which would erase the split points before
+// splitAlternatives ever saw them.
 
 function normalize(text) {
   return text
     .toLowerCase()
     .trim()
-    .replace(/&/g, "and")
-    .replace(/\s+/g, " ");
+    .replace(/&/g, " and ")
+    .replace(/\//g, " and ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function stripParenthetical(text) {
   return text.replace(/\s*\([^)]*\)\s*/g, " ").trim();
 }
 
-function acceptableAnswers(card) {
-  const variants = new Set();
+function splitAlternatives(text) {
+  return text
+    .split(/\s+or\s+|\s*\/\s*/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
 
-  const addVariant = (text) => {
-    if (!text) return;
-    variants.add(normalize(text));
-    const stripped = stripParenthetical(text);
-    if (stripped) variants.add(normalize(stripped));
+function acceptableAnswers(card) {
+  const rawCandidates = new Set();
+
+  const addCandidate = (text) => {
+    const trimmed = text?.trim();
+    if (trimmed) rawCandidates.add(trimmed);
   };
 
-  addVariant(card.definition);
+  const collect = (text) => {
+    addCandidate(text);
+    const parts = splitAlternatives(text);
+    if (parts.length > 1) parts.forEach(addCandidate);
+  };
 
-  for (const variant of [...variants]) {
-    if (variant.includes(" or ")) {
-      for (const part of variant.split(" or ")) {
-        variants.add(part.trim());
-      }
-    }
+  collect(card.definition);
+  const stripped = stripParenthetical(card.definition);
+  if (stripped && stripped !== card.definition) collect(stripped);
+
+  // Card-specific extra phrasings that don't derive from the definition
+  // text itself (e.g. "pulse oxygen" alongside SpO2's "pulse ox").
+  (card.synonyms || []).forEach(collect);
+
+  const variants = new Set();
+  for (const candidate of rawCandidates) {
+    variants.add(normalize(candidate));
   }
-
   variants.delete("");
   return variants;
 }
