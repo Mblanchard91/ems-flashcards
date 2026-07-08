@@ -8,17 +8,30 @@ import Quiz from "./components/Quiz.jsx";
 import QuizSummary from "./components/QuizSummary.jsx";
 import "./App.css";
 
+const SETTINGS_KEY = "ems-flashcards:settings";
 const DEFAULT_SETTINGS = { focusOnly: true, mnemonicsInOrder: true };
+
+// TEMP ONE-TIME MIGRATION: anyone with settings saved from before both
+// checkboxes defaulted to checked gets forced back to checked, exactly
+// once. Runs at module load (before the settings hook reads localStorage)
+// so there's no flash of the old value. Safe to remove once devices that
+// matter have loaded the app at least once after this shipped.
+const SETTINGS_RESET_FLAG_KEY = "ems-flashcards:settings-reset-v1";
+try {
+  if (!localStorage.getItem(SETTINGS_RESET_FLAG_KEY)) {
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(DEFAULT_SETTINGS));
+    localStorage.setItem(SETTINGS_RESET_FLAG_KEY, "1");
+  }
+} catch {
+  // localStorage unavailable — nothing to migrate
+}
 
 function selectCards(settings) {
   return settings.focusOnly ? cards.filter((card) => card.focus) : cards;
 }
 
 function App() {
-  const [settings, setSettings] = useLocalStorageState(
-    "ems-flashcards:settings",
-    DEFAULT_SETTINGS
-  );
+  const [settings, setSettings] = useLocalStorageState(SETTINGS_KEY, DEFAULT_SETTINGS);
   const [screen, setScreen] = useState("home");
   const [deck, setDeck] = useState([]);
   const [quizResult, setQuizResult] = useState(null);
