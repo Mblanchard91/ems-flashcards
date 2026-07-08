@@ -8,7 +8,7 @@ import Quiz from "./components/Quiz.jsx";
 import QuizSummary from "./components/QuizSummary.jsx";
 import "./App.css";
 
-const DEFAULT_SETTINGS = { focusOnly: false, mnemonicsInOrder: false };
+const DEFAULT_SETTINGS = { focusOnly: true, mnemonicsInOrder: true };
 
 function selectCards(settings) {
   return settings.focusOnly ? cards.filter((card) => card.focus) : cards;
