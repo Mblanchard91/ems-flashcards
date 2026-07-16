@@ -22,7 +22,7 @@ function CustomDeckLanding({ deck, onStartFlashcards, onStartQuiz, onEdit, onSwi
       </div>
 
       <button type="button" className={styles.switchLink} onClick={onSwitchToMainDeck}>
-        Browse the full EMS deck instead
+        Browse Abbreviations &amp; Mnemonics
       </button>
     </div>
   );
