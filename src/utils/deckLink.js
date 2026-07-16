@@ -87,6 +87,19 @@ function buildPermanentLink(deckId) {
   return url.toString();
 }
 
+// Plain base64 JSON, not lz-string — this only ever travels inside an email
+// body (no URL-length pressure), and a review script decoding it needs a
+// trivial, unambiguous format rather than re-implementing lz-string's
+// compression algorithm in a different runtime.
+function encodeSubmissionPayload({ name, deckId, cards }) {
+  const json = JSON.stringify({
+    name,
+    slug: deckId,
+    cards: cards.map((c) => [c.term, c.definition]),
+  });
+  return btoa(unescape(encodeURIComponent(json)));
+}
+
 export {
   slugify,
   generateDeckId,
@@ -95,4 +108,5 @@ export {
   fetchCommunityDeck,
   buildTemporaryLink,
   buildPermanentLink,
+  encodeSubmissionPayload,
 };
