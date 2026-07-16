@@ -30,45 +30,16 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--color-primary-dark);
   margin-bottom: 8px;
+  word-break: break-word;
 }
 
 .subtitle {
   color: var(--color-text-muted);
   font-size: 1rem;
   margin-bottom: 32px;
-}
-
-.settingsCard {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  padding: 8px 20px;
-  margin-bottom: 20px;
-}
-
-.settingsCard > label + label {
-  border-top: 1px solid var(--color-border);
-}
-
-.countBadge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--color-primary-soft);
-  color: var(--color-primary-dark);
-  border-radius: var(--radius-md);
-  padding: 14px 18px;
-  font-weight: 700;
-  margin-bottom: 28px;
-  font-size: 0.95rem;
-}
-
-.countBadge strong {
-  font-size: 1.15rem;
 }
 
 .actions {
@@ -83,7 +54,7 @@
   font-size: 1.05rem;
 }
 
-.buildLink {
+.switchLink {
   text-align: center;
   margin-top: 20px;
   font-weight: 600;

@@ -1,0 +1,247 @@
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 40px;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  min-height: 40px;
+}
+
+.title {
+  font-size: 1.3rem;
+  color: var(--color-primary-dark);
+}
+
+.nameInput {
+  width: 100%;
+  min-height: var(--tap-target);
+  padding: 0 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.nameInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.addCard {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addCard input {
+  width: 100%;
+  min-height: var(--tap-target);
+  padding: 0 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.addCard input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.cardCount {
+  font-weight: 700;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.cardList {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardItem {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cardItemText {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardItemTerm {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.cardItemDefinition {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardItemActions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.iconBtn:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+
+.empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  padding: 24px 0;
+}
+
+.disclaimer {
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.actions .btn {
+  width: 100%;
+}
+
+/* Publish results view */
+
+.resultCard {
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.resultCard h2 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.resultCard p {
+  opacity: 0.85;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.linkBlock {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.linkLabel {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 4px;
+}
+
+.linkHint {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.linkRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.linkText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.copyBtn {
+  flex-shrink: 0;
+  min-height: 40px;
+  padding: 0 16px;
+  font-size: 0.85rem;
+}
