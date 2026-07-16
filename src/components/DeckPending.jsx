@@ -11,7 +11,7 @@ function DeckPending({ onSwitchToMainDeck }) {
       </p>
       <div className={styles.actions}>
         <button type="button" className="btn btn-primary" onClick={onSwitchToMainDeck}>
-          Browse the full EMS deck instead
+          Browse Abbreviations &amp; Mnemonics
         </button>
       </div>
     </div>
