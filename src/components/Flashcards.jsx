@@ -131,6 +131,18 @@ function Flashcards({ deck, onBack }) {
               flipped={flipped}
               onClick={() => setFlipped((f) => !f)}
             />
+            {isFirst && (
+              <div
+                className={`${styles.swipeHint} ${
+                  !isDragging && settling === null ? styles.swipeHintVisible : ""
+                }`}
+                aria-hidden="true"
+              >
+                <span className={styles.swipeChevronLeft}>‹‹</span>
+                swipe
+                <span className={styles.swipeChevronRight}>››</span>
+              </div>
+            )}
           </div>
           <div className={styles.slide} style={{ width: stageWidth }}>
             {nextCard && <CardFace card={nextCard} flipped={false} />}

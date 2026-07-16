@@ -66,6 +66,7 @@
 }
 
 .slide {
+  position: relative;
   flex: 0 0 auto;
   height: 100%;
   display: flex;
@@ -74,6 +75,66 @@
   perspective: 1400px;
   box-sizing: border-box;
   padding: 0 4px;
+}
+
+.swipeHint {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(28, 35, 33, 0.62);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.swipeHintVisible {
+  opacity: 1;
+}
+
+.swipeChevronLeft,
+.swipeChevronRight {
+  display: inline-block;
+  font-size: 0.85rem;
+}
+
+.swipeChevronLeft {
+  animation: swipeChevronLeft 1.4s ease-in-out infinite;
+}
+
+.swipeChevronRight {
+  animation: swipeChevronRight 1.4s ease-in-out infinite;
+}
+
+@keyframes swipeChevronLeft {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes swipeChevronRight {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
 }
 
 .cardInner {
