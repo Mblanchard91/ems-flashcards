@@ -47,6 +47,14 @@
   transition: width 0.3s ease;
 }
 
+.prompt {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
 .hint {
   text-align: center;
   color: var(--color-text-muted);

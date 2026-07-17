@@ -14,7 +14,7 @@ function MatchingPlayer({ items, onBack, onFinish }) {
   const timeoutRef = useRef(null);
 
   const item = items[index];
-  const { pairs } = item.payload;
+  const { pairs, prompt } = item.payload;
   const isLast = index === items.length - 1;
   const isComplete = matched.size === pairs.length;
 
@@ -117,6 +117,7 @@ function MatchingPlayer({ items, onBack, onFinish }) {
         />
       </div>
 
+      {prompt && <p className={styles.prompt}>{prompt}</p>}
       <p className={styles.hint}>Tap a term, then tap its match</p>
 
       <div className={styles.columns}>

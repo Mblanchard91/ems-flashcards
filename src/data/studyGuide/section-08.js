@@ -10,6 +10,7 @@ const items = [
     concept: "oxygen-targets",
     mode: "match",
     payload: {
+      prompt: "Match the patient/condition to the correct oxygen treatment.",
       pairs: [
         { left: "Inadequate breathing (adult)", right: "PPV 10-12 breaths/min" },
         { left: "Inadequate breathing (infant/child)", right: "PPV 12-20 breaths/min" },
