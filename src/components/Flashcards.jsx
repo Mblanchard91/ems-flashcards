@@ -23,7 +23,7 @@ function CardFace({ card, flipped, onClick }) {
 // Renders prev/current/next as a three-up filmstrip and slides the whole
 // strip left/right, so the outgoing card fully leaves before the incoming
 // card's content is ever on screen — rather than swapping text in place.
-function Flashcards({ deck, onBack }) {
+function Flashcards({ deck, onBack, backLabel = "‹ Back to Home" }) {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [settling, setSettling] = useState(null); // null | "left" | "right"
@@ -101,7 +101,7 @@ function Flashcards({ deck, onBack }) {
     <div className={styles.screen}>
       <div className={styles.header}>
         <button type="button" className="btn btn-ghost" onClick={onBack}>
-          ‹ Back to Home
+          {backLabel}
         </button>
         <span className={styles.progress}>
           Card {index + 1} of {deck.length}

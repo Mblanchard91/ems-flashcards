@@ -1,0 +1,151 @@
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 32px;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  min-height: 40px;
+}
+
+.progress {
+  font-weight: 700;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.progressTrack {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--color-border);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.questionCard {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 28px 24px;
+  text-align: center;
+  margin-bottom: 12px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--color-primary-dark);
+}
+
+.hint {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.choice {
+  appearance: none;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  min-height: var(--tap-target);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.checkbox {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: white;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.choiceSelected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.choiceSelected .checkbox {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+}
+
+.choiceCorrect {
+  border-color: var(--color-success);
+  background: var(--color-success-soft);
+}
+
+.choiceCorrect .checkbox {
+  border-color: var(--color-success);
+  background: var(--color-success);
+}
+
+.choiceWrong {
+  border-color: var(--color-danger);
+  background: var(--color-danger-soft);
+}
+
+.choiceWrong .checkbox {
+  border-color: var(--color-danger);
+  background: var(--color-danger);
+}
+
+.choiceMissed {
+  border-color: var(--color-success);
+  border-style: dashed;
+}
