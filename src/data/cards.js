@@ -181,13 +181,13 @@ const mnemonicCards = [
   { id: 251, term: "In APGAR, what does P stand for?", definition: "Pulse", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
   { id: 252, term: "In APGAR, what does G stand for?", definition: "Grimace", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
   { id: 253, term: "In APGAR, what does the second A stand for?", definition: "Activity", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
-  { id: 254, term: "In APGAR, what does R stand for?", definition: "Respirations", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
+  { id: 254, term: "In APGAR, what does R stand for?", definition: "Respirations", synonyms: ["Respiration"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
 
   // PEARL
   { id: 260, term: "In PEARL, what does P stand for?", definition: "Pupils", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
   { id: 261, term: "In PEARL, what does E stand for?", definition: "Equal", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
   { id: 262, term: "In PEARL, what does A stand for?", definition: "And", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
-  { id: 263, term: "In PEARL, what does R stand for?", definition: "React", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
+  { id: 263, term: "In PEARL, what does R stand for?", definition: "React", synonyms: ["Reactive"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
   { id: 264, term: "In PEARL, what does L stand for?", definition: "Light", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "PEARL" },
 ];
 
