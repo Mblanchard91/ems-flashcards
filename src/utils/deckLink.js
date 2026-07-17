@@ -91,10 +91,11 @@ function buildPermanentLink(deckId) {
 // body (no URL-length pressure), and a review script decoding it needs a
 // trivial, unambiguous format rather than re-implementing lz-string's
 // compression algorithm in a different runtime.
-function encodeSubmissionPayload({ name, deckId, cards }) {
+function encodeSubmissionPayload({ name, deckId, cards, listPublicly }) {
   const json = JSON.stringify({
     name,
     slug: deckId,
+    listPublicly,
     cards: cards.map((c) => [c.term, c.definition]),
   });
   return btoa(unescape(encodeURIComponent(json)));

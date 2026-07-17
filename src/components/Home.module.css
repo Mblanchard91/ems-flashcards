@@ -20,6 +20,13 @@
   }
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  margin-bottom: 4px;
+}
+
 .eyebrow {
   color: var(--color-primary);
   font-weight: 700;
@@ -81,16 +88,4 @@
 .actions .btn {
   width: 100%;
   font-size: 1.05rem;
-}
-
-.buildLink {
-  text-align: center;
-  margin-top: 20px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  text-decoration: underline;
-  background: none;
-  border: none;
-  cursor: pointer;
 }

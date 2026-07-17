@@ -11,15 +11,16 @@ import styles from "./CreateDeck.module.css";
 // Gmail treats dots in the local-part as insignificant, so this is the same
 // inbox as "michael.blanchard250@gmail.com".
 const REVIEW_EMAIL = "michaelblanchard250@gmail.com";
-const EMPTY_DRAFT = { name: "", cards: [] };
+const EMPTY_DRAFT = { name: "", cards: [], listPublicly: true };
 
-function buildReviewMailto({ name, deckId, cards, temporaryLink, permanentLink }) {
+function buildReviewMailto({ name, deckId, cards, listPublicly, temporaryLink, permanentLink }) {
   const subject = `New community deck submission: ${name}`;
-  const payload = encodeSubmissionPayload({ name, deckId, cards });
+  const payload = encodeSubmissionPayload({ name, deckId, cards, listPublicly });
   const body = [
     `New community deck submission: ${name}`,
     "",
     `Card count: ${cards.length}`,
+    `List on main page: ${listPublicly ? "Yes" : "No"}`,
     "",
     `Temporary link (already works): ${temporaryLink}`,
     `Permanent link (once merged): ${permanentLink}`,
@@ -66,18 +67,26 @@ function CreateDeck({ initialDeck, onBack }) {
   const editing = !!initialDeck;
   const [name, setName] = useState(initialDeck?.name ?? draft.name);
   const [cards, setCards] = useState(initialDeck?.cards ?? draft.cards);
+  const [listPublicly, setListPublicly] = useState(
+    initialDeck?.listPublicly ?? draft.listPublicly ?? true
+  );
   const [termInput, setTermInput] = useState("");
   const [definitionInput, setDefinitionInput] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [published, setPublished] = useState(null);
 
-  const syncDraft = (nextName, nextCards) => {
-    if (!editing) setDraft({ name: nextName, cards: nextCards });
+  const syncDraft = (nextName, nextCards, nextListPublicly) => {
+    if (!editing) setDraft({ name: nextName, cards: nextCards, listPublicly: nextListPublicly });
   };
 
   const updateName = (value) => {
     setName(value);
-    syncDraft(value, cards);
+    syncDraft(value, cards, listPublicly);
+  };
+
+  const updateListPublicly = (value) => {
+    setListPublicly(value);
+    syncDraft(name, cards, value);
   };
 
   const resetForm = () => {
@@ -97,7 +106,7 @@ function CreateDeck({ initialDeck, onBack }) {
         : [...cards, { id: crypto.randomUUID(), term, definition }];
 
     setCards(nextCards);
-    syncDraft(name, nextCards);
+    syncDraft(name, nextCards, listPublicly);
     resetForm();
   };
 
@@ -110,7 +119,7 @@ function CreateDeck({ initialDeck, onBack }) {
   const deleteCard = (id) => {
     const nextCards = cards.filter((c) => c.id !== id);
     setCards(nextCards);
-    syncDraft(name, nextCards);
+    syncDraft(name, nextCards, listPublicly);
     if (editingId === id) resetForm();
   };
 
@@ -131,6 +140,7 @@ function CreateDeck({ initialDeck, onBack }) {
       name: name.trim(),
       deckId: published.deckId,
       cards,
+      listPublicly,
       temporaryLink: published.temporaryLink,
       permanentLink: published.permanentLink,
     });
@@ -140,6 +150,7 @@ function CreateDeck({ initialDeck, onBack }) {
         <div className={styles.resultCard}>
           <h2>"{name.trim()}" is ready</h2>
           <p>{cards.length} card{cards.length === 1 ? "" : "s"}</p>
+          <p>{listPublicly ? "Will be listed on the shared decks page" : "Link-only — not listed publicly"}</p>
         </div>
 
         <CopyLink
@@ -244,6 +255,15 @@ function CreateDeck({ initialDeck, onBack }) {
           ))}
         </ul>
       )}
+
+      <label className={`checkbox-row ${styles.listPubliclyRow}`}>
+        <input
+          type="checkbox"
+          checked={listPublicly}
+          onChange={() => updateListPublicly(!listPublicly)}
+        />
+        <span>List this deck on the shared decks page so others can find it</span>
+      </label>
 
       <p className={styles.disclaimer}>
         Once you generate your links, anyone who has them can view and study

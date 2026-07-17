@@ -3,7 +3,9 @@ import { cards } from "./data/cards.js";
 import { buildDeck } from "./utils/deck.js";
 import { useLocalStorageState } from "./hooks/useLocalStorageState.js";
 import { decodeDeckData, fetchCommunityDeck } from "./utils/deckLink.js";
+import Landing from "./components/Landing.jsx";
 import Home from "./components/Home.jsx";
+import CommunityDecks from "./components/CommunityDecks.jsx";
 import Flashcards from "./components/Flashcards.jsx";
 import Quiz from "./components/Quiz.jsx";
 import QuizSummary from "./components/QuizSummary.jsx";
@@ -86,6 +88,17 @@ function App() {
     setQuizResult(null);
   };
 
+  const backToAbbreviations = () => {
+    setScreen("abbreviations");
+    setDeck([]);
+    setQuizResult(null);
+  };
+
+  // Flashcards/Quiz/QuizSummary are shared between the abbreviations deck
+  // and a loaded custom deck — "back" needs to land on whichever screen
+  // the study session was actually started from.
+  const backFromStudySession = customDeck ? goHome : backToAbbreviations;
+
   const startFlashcards = () => {
     const source = customDeck ? customDeck.cards : selectCards(settings);
     setDeck(buildDeck(source, settings));
@@ -109,6 +122,11 @@ function App() {
     setScreen("quiz");
   };
 
+  const openCommunityDeck = (deckData) => {
+    setCustomDeck(deckData);
+    setScreen("home");
+  };
+
   return (
     <div className="app">
       {screen === "resolving" && <div />}
@@ -124,29 +142,42 @@ function App() {
             onSwitchToMainDeck={exitToMainHome}
           />
         ) : (
-          <Home
-            settings={settings}
-            onSettingsChange={setSettings}
-            onStartFlashcards={startFlashcards}
-            onStartQuiz={startQuiz}
-            onBuildOwnDeck={() => setScreen("create-deck")}
+          <Landing
+            onOpenAbbreviations={() => setScreen("abbreviations")}
             onOpenStudyGuide={() => setScreen("study-guide")}
+            onOpenCommunity={() => setScreen("community")}
           />
         ))}
+      {screen === "abbreviations" && (
+        <Home
+          settings={settings}
+          onSettingsChange={setSettings}
+          onStartFlashcards={startFlashcards}
+          onStartQuiz={startQuiz}
+          onBack={goHome}
+        />
+      )}
+      {screen === "community" && (
+        <CommunityDecks
+          onBack={goHome}
+          onBuildOwnDeck={() => setScreen("create-deck")}
+          onOpenDeck={openCommunityDeck}
+        />
+      )}
       {screen === "create-deck" && (
         <CreateDeck initialDeck={customDeck} onBack={exitToMainHome} />
       )}
       {screen === "study-guide" && <StudyGuide onExit={goHome} />}
-      {screen === "flashcards" && <Flashcards deck={deck} onBack={goHome} />}
+      {screen === "flashcards" && <Flashcards deck={deck} onBack={backFromStudySession} />}
       {screen === "quiz" && (
-        <Quiz deck={deck} onBack={goHome} onFinish={finishQuiz} />
+        <Quiz deck={deck} onBack={backFromStudySession} onFinish={finishQuiz} />
       )}
       {screen === "quiz-summary" && quizResult && (
         <QuizSummary
           total={quizResult.total}
           missed={quizResult.missed}
           onRetryMissed={retryMissed}
-          onHome={goHome}
+          onHome={backFromStudySession}
         />
       )}
     </div>

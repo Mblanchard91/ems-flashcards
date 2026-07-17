@@ -4,14 +4,7 @@ import styles from "./Home.module.css";
 const TOTAL_COUNT = cards.length;
 const FOCUS_COUNT = cards.filter((card) => card.focus).length;
 
-function Home({
-  settings,
-  onSettingsChange,
-  onStartFlashcards,
-  onStartQuiz,
-  onBuildOwnDeck,
-  onOpenStudyGuide,
-}) {
+function Home({ settings, onSettingsChange, onStartFlashcards, onStartQuiz, onBack }) {
   const selectedCount = settings.focusOnly ? FOCUS_COUNT : TOTAL_COUNT;
 
   const toggle = (key) => {
@@ -20,6 +13,12 @@ function Home({
 
   return (
     <div className={styles.screen}>
+      <div className={styles.header}>
+        <button type="button" className="btn btn-ghost" onClick={onBack}>
+          ‹ Back
+        </button>
+      </div>
+
       <div className={styles.eyebrow}>EMS Study Cards</div>
       <h1 className={styles.title}>Abbreviations &amp; Mnemonics</h1>
       <p className={styles.subtitle}>
@@ -61,14 +60,6 @@ function Home({
           Start Quiz
         </button>
       </div>
-
-      <button type="button" className={styles.buildLink} onClick={onBuildOwnDeck}>
-        Build Your Own Deck
-      </button>
-
-      <button type="button" className={styles.buildLink} onClick={onOpenStudyGuide}>
-        EMT Final Review — Study Guide
-      </button>
     </div>
   );
 }

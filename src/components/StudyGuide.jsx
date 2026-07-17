@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { sections, modesForSection, itemsForMode } from "../data/studyGuide/index.js";
+import { shuffle } from "../utils/deck.js";
 import Flashcards from "./Flashcards.jsx";
 import MultiSelectPlayer from "./MultiSelectPlayer.jsx";
 import MatchingPlayer from "./MatchingPlayer.jsx";
@@ -29,7 +30,7 @@ function StudyGuide({ onExit }) {
 
   const openMode = (m) => {
     setMode(m);
-    setPlayItems(itemsForMode(section, m));
+    setPlayItems(shuffle(itemsForMode(section, m)));
     setScreen("play");
   };
 
@@ -52,7 +53,7 @@ function StudyGuide({ onExit }) {
 
   const retryMissed = (missed) => {
     const missedIds = new Set(missed.map((m) => m.id));
-    setPlayItems(itemsForMode(section, mode).filter((item) => missedIds.has(item.id)));
+    setPlayItems(shuffle(itemsForMode(section, mode).filter((item) => missedIds.has(item.id))));
     setResult(null);
     setScreen("play");
   };

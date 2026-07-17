@@ -74,8 +74,8 @@ const items = [
     concept: "draw-sheet-transfer",
     mode: "flashcard",
     payload: {
-      front: "What replaces “sheet drag” in the textbook, and what is it?",
-      back: "The modified draw-sheet transfer — a 4-step technique for sliding a patient from one stretcher/cot to another using a taut sheet.",
+      front: "Modified draw-sheet transfer",
+      back: "A technique for sliding a patient from one stretcher/cot to another using a taut sheet, gathered and pulled at the shoulders, mid-torso, hips, and knees.",
     },
   },
   {

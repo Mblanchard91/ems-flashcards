@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { shuffle } from "../utils/deck.js";
 import styles from "./MultiSelectPlayer.module.css";
 
 function MultiSelectPlayer({ items, onBack, onFinish }) {
@@ -10,7 +11,11 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
   const item = items[index];
   const { question, choices, correctIndices } = item.payload;
   const isLast = index === items.length - 1;
-  const correctSet = new Set(correctIndices);
+
+  const shuffledChoices = useMemo(
+    () => shuffle(choices.map((text, i) => ({ text, correct: correctIndices.includes(i) }))),
+    [choices, correctIndices]
+  );
 
   const toggleChoice = (i) => {
     if (submitted) return;
@@ -23,8 +28,9 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
   };
 
   const isCorrect = () => {
-    if (selected.size !== correctSet.size) return false;
-    for (const i of selected) if (!correctSet.has(i)) return false;
+    const correctCount = shuffledChoices.filter((c) => c.correct).length;
+    if (selected.size !== correctCount) return false;
+    for (const i of selected) if (!shuffledChoices[i].correct) return false;
     return true;
   };
 
@@ -37,7 +43,10 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
           {
             id: item.id,
             prompt: question,
-            correctAnswerText: correctIndices.map((i) => choices[i]).join("; "),
+            correctAnswerText: shuffledChoices
+              .filter((c) => c.correct)
+              .map((c) => c.text)
+              .join("; "),
           },
         ]);
       }
@@ -57,7 +66,7 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
   const choiceClass = (i) => {
     if (!submitted) return selected.has(i) ? styles.choiceSelected : "";
     const isChosen = selected.has(i);
-    const shouldBeChosen = correctSet.has(i);
+    const shouldBeChosen = shuffledChoices[i].correct;
     if (shouldBeChosen && isChosen) return styles.choiceCorrect;
     if (shouldBeChosen && !isChosen) return styles.choiceMissed;
     if (!shouldBeChosen && isChosen) return styles.choiceWrong;
@@ -89,7 +98,7 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
       <p className={styles.hint}>Select all that apply</p>
 
       <div className={styles.choices}>
-        {choices.map((choice, i) => (
+        {shuffledChoices.map((choice, i) => (
           <button
             key={i}
             type="button"
@@ -97,7 +106,7 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
             onClick={() => toggleChoice(i)}
           >
             <span className={styles.checkbox}>{selected.has(i) ? "✓" : ""}</span>
-            <span>{choice}</span>
+            <span>{choice.text}</span>
           </button>
         ))}
       </div>
