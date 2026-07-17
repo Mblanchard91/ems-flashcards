@@ -54,6 +54,11 @@
   gap: 12px;
 }
 
+.cardHighlight {
+  border: 2px solid var(--color-accent);
+  margin-bottom: 20px;
+}
+
 .card {
   appearance: none;
   border: none;
