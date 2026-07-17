@@ -10,6 +10,7 @@ import QuizSummary from "./components/QuizSummary.jsx";
 import CreateDeck from "./components/CreateDeck.jsx";
 import CustomDeckLanding from "./components/CustomDeckLanding.jsx";
 import DeckPending from "./components/DeckPending.jsx";
+import StudyGuide from "./components/StudyGuide.jsx";
 import "./App.css";
 
 const SETTINGS_KEY = "ems-flashcards:settings";
@@ -129,11 +130,13 @@ function App() {
             onStartFlashcards={startFlashcards}
             onStartQuiz={startQuiz}
             onBuildOwnDeck={() => setScreen("create-deck")}
+            onOpenStudyGuide={() => setScreen("study-guide")}
           />
         ))}
       {screen === "create-deck" && (
         <CreateDeck initialDeck={customDeck} onBack={exitToMainHome} />
       )}
+      {screen === "study-guide" && <StudyGuide onExit={goHome} />}
       {screen === "flashcards" && <Flashcards deck={deck} onBack={goHome} />}
       {screen === "quiz" && (
         <Quiz deck={deck} onBack={goHome} onFinish={finishQuiz} />
