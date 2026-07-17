@@ -167,14 +167,14 @@ const mnemonicCards = [
   { id: 233, term: "In AVPU, what does U stand for?", definition: "Unresponsive", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "AVPU" },
 
   // DCAP-BTLS
-  { id: 240, term: "In DCAP-BTLS, what does D stand for?", definition: "Deformity", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
-  { id: 241, term: "In DCAP-BTLS, what does C stand for?", definition: "Contusion", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
-  { id: 242, term: "In DCAP-BTLS, what does A stand for?", definition: "Abrasion", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
-  { id: 243, term: "In DCAP-BTLS, what does P stand for?", definition: "Puncture", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
-  { id: 244, term: "In DCAP-BTLS, what does B stand for?", definition: "Burns", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 240, term: "In DCAP-BTLS, what does D stand for?", definition: "Deformity", synonyms: ["Deformities"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 241, term: "In DCAP-BTLS, what does C stand for?", definition: "Contusion", synonyms: ["Contusions"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 242, term: "In DCAP-BTLS, what does A stand for?", definition: "Abrasion", synonyms: ["Abrasions"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 243, term: "In DCAP-BTLS, what does P stand for?", definition: "Puncture", synonyms: ["Punctures"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 244, term: "In DCAP-BTLS, what does B stand for?", definition: "Burns", synonyms: ["Burn"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
   { id: 245, term: "In DCAP-BTLS, what does T stand for?", definition: "Tenderness", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
-  { id: 246, term: "In DCAP-BTLS, what does L stand for?", definition: "Lacerations", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
-  { id: 247, term: "In DCAP-BTLS, what does S stand for?", definition: "Swelling", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 246, term: "In DCAP-BTLS, what does L stand for?", definition: "Lacerations", synonyms: ["Laceration"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
+  { id: 247, term: "In DCAP-BTLS, what does S stand for?", definition: "Swelling", synonyms: ["Swellings"], focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "DCAP-BTLS" },
 
   // APGAR — note two A's
   { id: 250, term: "In APGAR, what does the first A stand for?", definition: "Appearance", focus: true, category: "Mnemonics", type: "mnemonic", mnemonicGroup: "APGAR" },
