@@ -153,6 +153,14 @@
   padding: 24px 0;
 }
 
+.listPubliclyRow {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 4px 14px;
+  margin-bottom: 14px;
+}
+
 .disclaimer {
   background: var(--color-surface-alt);
   border-radius: var(--radius-md);

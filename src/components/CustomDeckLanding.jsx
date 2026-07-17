@@ -22,7 +22,7 @@ function CustomDeckLanding({ deck, onStartFlashcards, onStartQuiz, onEdit, onSwi
       </div>
 
       <button type="button" className={styles.switchLink} onClick={onSwitchToMainDeck}>
-        Browse Abbreviations &amp; Mnemonics
+        ‹ Back to Home
       </button>
     </div>
   );
