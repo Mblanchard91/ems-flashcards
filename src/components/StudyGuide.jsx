@@ -2,9 +2,11 @@ import { useState } from "react";
 import { sections, modesForSection, itemsForMode } from "../data/studyGuide/index.js";
 import { shuffle } from "../utils/deck.js";
 import Flashcards from "./Flashcards.jsx";
+import MCPlayer from "./MCPlayer.jsx";
 import MultiSelectPlayer from "./MultiSelectPlayer.jsx";
 import MatchingPlayer from "./MatchingPlayer.jsx";
 import SequencePlayer from "./SequencePlayer.jsx";
+import FIBPlayer from "./FIBPlayer.jsx";
 import StudyGuideSummary from "./StudyGuideSummary.jsx";
 import styles from "./StudyGuide.module.css";
 
@@ -110,6 +112,9 @@ function StudyGuide({ onExit }) {
   if (screen === "play" && mode === "flashcard") {
     return <Flashcards deck={toFlashcardDeck(playItems)} onBack={backToModes} backLabel="‹ Back" />;
   }
+  if (screen === "play" && mode === "mc") {
+    return <MCPlayer items={playItems} onBack={backToModes} onFinish={handleFinish} />;
+  }
   if (screen === "play" && mode === "multi") {
     return <MultiSelectPlayer items={playItems} onBack={backToModes} onFinish={handleFinish} />;
   }
@@ -118,6 +123,9 @@ function StudyGuide({ onExit }) {
   }
   if (screen === "play" && mode === "seq") {
     return <SequencePlayer items={playItems} onBack={backToModes} onFinish={handleFinish} />;
+  }
+  if (screen === "play" && mode === "fib") {
+    return <FIBPlayer items={playItems} onBack={backToModes} onFinish={handleFinish} />;
   }
 
   if (screen === "summary" && result) {
