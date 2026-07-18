@@ -3,13 +3,13 @@
 //
 // This section covers the doc's "7 Matching" medical terminology item (the
 // doc's header says 7, but 12 terms are actually listed — a source-document
-// quirk, not something changed here), split into two 6-term rounds. Only
-// 7 of the 12 (Tachycardia, Bradycardia, Auscultation, Apnea, Dyspnea,
-// Dysrhythmia, Asystole) have confirmed textbook glossary definitions.
-// The other 5 (Tachypnea, Bradypnea, Hypotension, Hypertension, Hypoxemia)
-// were authored from general EMT/medical knowledge, not the textbook or
-// any other specific source — standard, unambiguous definitions, just not
-// textbook-cited. Kept in deliberately rather than trimmed.
+// quirk, not something changed here), split into two 6-term rounds. All 12
+// have real definitions written out in the original source document itself:
+// 7 (Tachycardia, Bradycardia, Auscultation, Apnea, Dyspnea, Dysrhythmia,
+// Asystole) use the textbook glossary's more precise/quantified wording;
+// the other 5 (Tachypnea, Bradypnea, Hypotension, Hypertension, Hypoxemia)
+// use the source document's own wording, since the glossary doesn't cover
+// them separately.
 //
 // The rest of this section is two flashcard sub-decks, both mode
 // "flashcard" but split into separate selectable decks via `deckLabel`
