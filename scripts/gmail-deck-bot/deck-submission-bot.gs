@@ -8,6 +8,11 @@
  * as a new file under public/community-decks/ — ready for a human (you) to
  * review and merge. Nothing merges automatically.
  *
+ * If the submission opted in to being listed on the browse page, the same
+ * PR also updates public/community-decks/index.json. Either way, you get a
+ * follow-up email once the PR is open, separate from the original
+ * submission email, so there's a clear "review this" nudge.
+ *
  * Setup: see README.md in this same folder.
  */
 
@@ -17,6 +22,9 @@ const GITHUB_API = "https://api.github.com";
 const SUBJECT_SEARCH_TERM = "New community deck submission";
 const PROCESSED_LABEL = "deck-processed";
 const FAILED_LABEL = "deck-processing-failed";
+// Gmail treats dots in the local-part as insignificant, so this is the same
+// inbox as "michael.blanchard250@gmail.com".
+const NOTIFY_EMAIL = "michaelblanchard250@gmail.com";
 
 /**
  * Entry point — call this from a time-based trigger (see setup()).
@@ -37,8 +45,9 @@ function processSubmissions() {
 
       try {
         const payload = parseSubmission(message);
-        const prUrl = createDeckPullRequest(payload);
-        Logger.log("Opened PR for deck '" + payload.name + "': " + prUrl);
+        const result = createDeckPullRequest(payload);
+        Logger.log("Opened PR for deck '" + payload.name + "': " + result.prUrl);
+        sendReviewNotification(payload, result.prUrl, result.listed);
         thread.addLabel(getOrCreateLabel(PROCESSED_LABEL));
         message.markRead();
       } catch (err) {
@@ -95,6 +104,23 @@ function getOrCreateLabel(name) {
   return GmailApp.getUserLabelByName(name) || GmailApp.createLabel(name);
 }
 
+// ---- Notification --------------------------------------------------------
+
+function sendReviewNotification(payload, prUrl, listed) {
+  const subject = "🔔 Review needed: new deck submission \"" + payload.name + "\"";
+  const body = [
+    "A new community deck submission is ready for your review.",
+    "",
+    "Deck: " + payload.name,
+    "Cards: " + payload.cards.length,
+    "Listed on browse page: " + (listed ? "Yes" : "No — link-only"),
+    "",
+    "Review and merge: " + prUrl,
+  ].join("\n");
+
+  GmailApp.sendEmail(NOTIFY_EMAIL, subject, body);
+}
+
 // ---- GitHub ------------------------------------------------------------
 
 function githubToken() {
@@ -140,6 +166,51 @@ function githubRequestOrThrow(path, options) {
   return result.json;
 }
 
+/**
+ * Appends { deckId, name, cardCount } to index.json on the given branch, so
+ * the deck shows up on the app's browse screen. Idempotent — skips if an
+ * entry for this deckId is already present (safe to run again on retry).
+ */
+function updateIndexJsonEntry(branch, payload) {
+  const repoPath = "/repos/" + GITHUB_OWNER + "/" + GITHUB_REPO;
+  const indexPath = "public/community-decks/index.json";
+
+  const current = githubRequestOrThrow(
+    repoPath + "/contents/" + indexPath + "?ref=" + encodeURIComponent(branch)
+  );
+  const currentJson = Utilities.newBlob(
+    Utilities.base64Decode(current.content.replace(/\s+/g, ""))
+  ).getDataAsString("UTF-8");
+  const list = JSON.parse(currentJson);
+
+  if (list.some((entry) => entry.deckId === payload.slug)) {
+    return;
+  }
+
+  list.push({
+    deckId: payload.slug,
+    name: payload.name,
+    cardCount: payload.cards.length,
+  });
+
+  const updatedContent = JSON.stringify(list, null, 2) + "\n";
+  const encodedContent = Utilities.base64Encode(updatedContent, Utilities.Charset.UTF_8);
+
+  githubRequestOrThrow(repoPath + "/contents/" + indexPath, {
+    method: "put",
+    contentType: "application/json",
+    payload: JSON.stringify({
+      message: "List community deck on browse page: " + payload.name,
+      content: encodedContent,
+      branch: branch,
+      sha: current.sha,
+    }),
+  });
+}
+
+/**
+ * Returns { prUrl, listed }.
+ */
 function createDeckPullRequest(payload) {
   const branch = "deck-submission/" + payload.slug;
   const filePath = "public/community-decks/" + payload.slug + ".json";
@@ -172,6 +243,11 @@ function createDeckPullRequest(payload) {
     }),
   });
 
+  const listed = !!payload.listPublicly;
+  if (listed) {
+    updateIndexJsonEntry(branch, payload);
+  }
+
   // 422 here means a PR for this branch already exists — fetch and return
   // that one instead of erroring.
   const prResult = githubRequest(repoPath + "/pulls", {
@@ -186,18 +262,20 @@ function createDeckPullRequest(payload) {
         "**Deck:** " +
         payload.name +
         "\n**Cards:** " +
-        payload.cards.length,
+        payload.cards.length +
+        "\n**Listed on browse page:** " +
+        (listed ? "Yes (index.json updated)" : "No — link-only"),
     }),
   });
 
   if (prResult.code < 300) {
-    return prResult.json.html_url;
+    return { prUrl: prResult.json.html_url, listed: listed };
   }
   if (prResult.code === 422) {
     const existing = githubRequestOrThrow(
       repoPath + "/pulls?head=" + GITHUB_OWNER + ":" + branch + "&state=open"
     );
-    if (existing.length > 0) return existing[0].html_url;
+    if (existing.length > 0) return { prUrl: existing[0].html_url, listed: listed };
   }
   throw new Error("Failed to open PR: " + JSON.stringify(prResult.json));
 }

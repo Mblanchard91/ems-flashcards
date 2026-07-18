@@ -50,15 +50,24 @@ That's it — submissions sent to that inbox will now turn into PRs within
 
 - The app's "Send for Review" button opens a pre-filled email with a
   `-----BEGIN DECK DATA-----` / `-----END DECK DATA-----` block containing
-  the deck as base64-encoded JSON (name, slug, cards).
+  the deck as base64-encoded JSON (name, slug, cards, and whether the
+  submitter checked "list this deck on the shared decks page").
 - Every 15 minutes, the script searches Gmail for unread submission emails,
   decodes that block, and:
   1. Creates a branch `deck-submission/<slug>`
   2. Adds `public/community-decks/<slug>.json` on that branch
-  3. Opens a pull request into `main`
-- The email gets labeled `deck-processed` (or `deck-processing-failed` if
-  something went wrong — check the Apps Script **Executions** log for the
-  error) and marked read, so it's never processed twice.
+  3. If the submitter opted in to listing, also appends an entry to
+     `public/community-decks/index.json` on the same branch, so the deck
+     shows up on the app's browse screen the moment the PR is merged — no
+     manual step needed either way
+  4. Opens a pull request into `main`
+  5. Sends you a separate notification email — subject
+     `🔔 Review needed: new deck submission "<name>"` — with the deck name,
+     card count, listed status, and a direct link to the PR
+- The original submission email gets labeled `deck-processed` (or
+  `deck-processing-failed` if something went wrong — check the Apps Script
+  **Executions** log for the error) and marked read, so it's never
+  processed twice.
 - The deck's permanent link (`?deckId=<slug>`) starts working the moment
   you merge the PR and the existing deploy workflow finishes — nothing
   else to do on your end beyond merging.
@@ -69,6 +78,19 @@ If an email got labeled `deck-processing-failed`, fix whatever the
 Executions log says was wrong (or just try again later if it looked like a
 transient GitHub API error), then remove the `deck-processing-failed`
 label and mark the email unread — it'll be picked up on the next run.
+
+## Updating the script
+
+`deck-submission-bot.gs` in this repo is the source of truth, but editing
+it here does **nothing** on its own — Apps Script only runs the copy
+that's pasted into your `script.google.com` project. Whenever this file
+changes:
+
+1. Open your existing Apps Script project (not a new one).
+2. Select all the code in the editor and replace it with the full,
+   current contents of `deck-submission-bot.gs`.
+3. Save. No need to re-run `setup()` — that only manages the recurring
+   trigger, which is unaffected by code changes.
 
 ## Rotating the token
 
