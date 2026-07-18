@@ -140,6 +140,25 @@ const items = [
       back: "No — it's a subtype of hypovolemic shock, specifically the bleeding-caused subset (hypovolemic shock caused by blood loss).",
     },
   },
+  {
+    id: "s4-shock-taxonomy-multi",
+    concept: "shock-types",
+    mode: "multi",
+    payload: {
+      question: "Which of these are one of the 5 primary causal types of shock (not a subtype, and not a stage)?",
+      choices: [
+        "Hypovolemic shock",
+        "Cardiogenic shock",
+        "Obstructive shock",
+        "Distributive shock",
+        "Neurogenic shock",
+        "Hemorrhagic shock",
+        "Compensated shock",
+        "Decompensated shock",
+      ],
+      correctIndices: [0, 1, 2, 3, 4],
+    },
+  },
 
   // --- Shock: 2 stages ---
   {

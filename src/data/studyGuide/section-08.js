@@ -14,11 +14,9 @@ const items = [
       pairs: [
         { left: "Inadequate breathing (adult)", right: "PPV 10-12 breaths/min" },
         { left: "Inadequate breathing (infant/child)", right: "PPV 12-20 breaths/min" },
-        { left: "Adequate breathing + chest trauma", right: "NRB 15 LPM, maintain SpO2 >95%" },
+        { left: "Trauma patient with adequate breathing", right: "15 LPM NRB, target SpO2 ≥95%" },
         { left: "Medical patient", right: "Nasal cannula 2 LPM, titrate to SpO2 ≥94%" },
-        { left: "Trauma patient", right: "15 LPM NRB, target SpO2 ≥95%" },
-        { left: "Pregnant, more than 20 weeks", right: "15 LPM NRB regardless of SpO2 (pregnancy)" },
-        { left: "Inhaled poisoning", right: "15 LPM NRB regardless of SpO2 (suspected poisoning)" },
+        { left: "Pregnant (>20 wks) or suspected inhaled poisoning", right: "15 LPM NRB regardless of SpO2" },
         { left: "COPD", right: "Nasal cannula, target SpO2 88-92%" },
       ],
     },
@@ -87,6 +85,7 @@ const items = [
     concept: "metabolism",
     mode: "match",
     payload: {
+      prompt: "Match each type of metabolism to its description.",
       pairs: [
         { left: "Aerobic metabolism", right: "Uses oxygen to metabolize glucose; efficient, minimal waste products" },
         { left: "Anaerobic metabolism", right: "Metabolizes glucose without oxygen; inefficient, produces lactic acid" },

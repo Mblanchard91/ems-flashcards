@@ -34,6 +34,22 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
     return true;
   };
 
+  const handleSkip = () => {
+    if (submitted) return;
+    setSubmitted(true);
+    setMissed((m) => [
+      ...m,
+      {
+        id: item.id,
+        prompt: question,
+        correctAnswerText: shuffledChoices
+          .filter((c) => c.correct)
+          .map((c) => c.text)
+          .join("; "),
+      },
+    ]);
+  };
+
   const handleSubmit = () => {
     if (!submitted) {
       setSubmitted(true);
@@ -95,7 +111,14 @@ function MultiSelectPlayer({ items, onBack, onFinish }) {
         <span className={styles.question}>{question}</span>
       </div>
 
-      <p className={styles.hint}>Select all that apply</p>
+      <div className={styles.hintRow}>
+        <p className={styles.hint}>Select all that apply</p>
+        {!submitted && (
+          <button type="button" className="btn-skip" onClick={handleSkip}>
+            Skip — show answer
+          </button>
+        )}
+      </div>
 
       <div className={styles.choices}>
         {shuffledChoices.map((choice, i) => (

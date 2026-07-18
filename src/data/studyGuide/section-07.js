@@ -13,18 +13,27 @@ const items = [
     },
   },
   {
+    id: "s7-spinal-ventilation-fc",
+    concept: "spinal-injury-treatment",
+    mode: "flashcard",
+    payload: {
+      front: "Spinal injury — when do you give PPV, and what's the SpO2 target?",
+      back: "Provide PPV if breathing is inadequate. Maintain SpO2 ≥94% — if the mechanism was trauma, use 15 LPM via nonrebreather regardless of the reading.",
+    },
+  },
+  {
     id: "s7-spinal-seq",
     concept: "spinal-injury-treatment",
     mode: "seq",
     payload: {
-      prompt: "Put the spinal injury treatment steps in order.",
+      prompt: "Put the spinal injury treatment steps in order. (PPV/SpO2 management happens alongside airway steps if breathing is inadequate — see the flashcard above — so it's not its own step here.)",
       steps: [
         "Manually stabilize the head and neck",
         "Open the airway with a jaw-thrust maneuver",
-        "Assess sensation, circulation, and motor function (SMC)",
-        "Assess the neck for injury",
-        "Apply a cervical collar",
-        "Secure to the long spine board (straps at nipple, navel, knee, then head)",
+        "Assess sensation, motor function, and circulation (SMC) in all extremities",
+        "Assess the neck for injury — before applying the cervical collar",
+        "Apply the cervical collar",
+        "Secure to the long spine board — straps at the nipple, navel, knee, then the head",
         "Reassess SMC",
         "Transport",
       ],
@@ -96,6 +105,7 @@ const items = [
     concept: "eye-injuries",
     mode: "match",
     payload: {
+      prompt: "Match each eye injury type to its treatment.",
       pairs: [
         { left: "Chemical exposure", right: "Irrigate continuously for 20+ minutes; protect the uninjured eye from runoff" },
         { left: "Embedded debris", right: "OK to remove if on the conjunctiva; never touch or remove if on the cornea" },
@@ -279,6 +289,7 @@ const items = [
     concept: "sickle-cell-complications",
     mode: "match",
     payload: {
+      prompt: "Match each sickle cell crisis complication to its description.",
       pairs: [
         { left: "Spleen destruction", right: "Increased infection risk" },
         { left: "Acute chest syndrome", right: "Shortness of breath and chest pain from hypoxia" },

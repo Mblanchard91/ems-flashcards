@@ -34,6 +34,7 @@ const items = [
     concept: "medical-terminology",
     mode: "match",
     payload: {
+      prompt: "Match each medical term to its definition (round 1 of 2).",
       pairs: [
         { left: "Tachycardic", right: "Abnormally fast heart rate" },
         { left: "Tachypnea", right: "Abnormally fast breathing rate" },
@@ -49,6 +50,7 @@ const items = [
     concept: "medical-terminology",
     mode: "match",
     payload: {
+      prompt: "Match each medical term to its definition (round 2 of 2).",
       pairs: [
         { left: "Dyspnea", right: "Difficulty breathing / shortness of breath" },
         { left: "Dysrhythmia", right: "Abnormal heart rhythm" },
@@ -172,8 +174,8 @@ const items = [
     mode: "flashcard",
     deckLabel: "Key Terms / Vocabulary",
     payload: {
-      front: "Heart failure (HF) / Congestive heart failure (CHF)",
-      back: "Same condition, interchangeable names.",
+      front: "Congestive heart failure (CHF)",
+      back: "Heart failure in which fluid backs up/congests the lungs and/or body due to the heart's inadequate pumping — used near-interchangeably with \"heart failure (HF)\" in EMS.",
     },
   },
 

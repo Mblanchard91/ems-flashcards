@@ -150,6 +150,7 @@ const items = [
     concept: "acute-psychosis",
     mode: "match",
     payload: {
+      prompt: "Match each acute psychosis symptom category to its description.",
       pairs: [
         { left: "Hallucinations", right: "False sensory perception — auditory (voices) is typically psychiatric, visual can be psychiatric or from drug intoxication/alcohol withdrawal" },
         { left: "Delusions", right: "A fixed false belief (e.g. paranoia)" },
@@ -276,6 +277,7 @@ const items = [
     concept: "mci-incident-command",
     mode: "match",
     payload: {
+      prompt: "Match each incident command structure to its description.",
       pairs: [
         { left: "Single incident command", right: "One agency controls everything (e.g. fire service runs EMS)" },
         { left: "Unified command", right: "Multiple agencies (fire/police/EMS) work independently but cooperatively — used when other agencies have major involvement" },
@@ -289,6 +291,7 @@ const items = [
     concept: "blast-injuries",
     mode: "match",
     payload: {
+      prompt: "Match each blast injury category to its description.",
       pairs: [
         { left: "Primary", right: "The blast wave itself" },
         { left: "Secondary", right: "Flying debris/shrapnel" },

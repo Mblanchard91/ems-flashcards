@@ -8,6 +8,7 @@ const items = [
     concept: "airway-management",
     mode: "match",
     payload: {
+      prompt: "Match each airway finding to the correct intervention.",
       pairs: [
         { left: "Snoring respirations", right: "Jaw-thrust or head-tilt chin-lift maneuver" },
         { left: "Gurgling respirations", right: "Suction the airway" },
@@ -132,6 +133,7 @@ const items = [
     concept: "choking-severity",
     mode: "match",
     payload: {
+      prompt: "Match each choking severity to its presentation.",
       pairs: [
         { left: "Severe choking", right: "No air movement at all — may still be conscious/walking but not breathing, coughing, or gasping" },
         { left: "Nonsevere choking", right: "Partial blockage — can speak/cough/wheeze/gasp, stridor possible" },
@@ -148,12 +150,21 @@ const items = [
     },
   },
   {
-    id: "s10-infant-technique-fc",
+    id: "s10-infant-backslaps-fc",
     concept: "choking-technique",
     mode: "flashcard",
     payload: {
-      front: "Infant (<1 year), severe choking — technique?",
-      back: "5 back slaps (infant prone along your forearm, head lower than body, heel of hand between shoulder blades) alternating with 5 chest thrusts (turn infant supine, head still lower than body, 2 fingers on lower sternum just below the nipple line, compress one-third the anterior-posterior depth of the chest — about 1.5 inches (3.8 cm) — 1 compression/second).",
+      front: "Infant (<1 year), severe choking — back slap technique?",
+      back: "Position the infant face-down along your forearm, head lower than the body. Give 5 back slaps with the heel of your hand between the shoulder blades.",
+    },
+  },
+  {
+    id: "s10-infant-chestthrusts-fc",
+    concept: "choking-technique",
+    mode: "flashcard",
+    payload: {
+      front: "Infant (<1 year), severe choking — chest thrust technique?",
+      back: "Turn the infant face-up, head still lower than the body. With 2 fingers on the lower sternum just below the nipple line, give 5 chest thrusts — about 1.5 inches deep (one-third the chest's depth), 1 per second.",
     },
   },
   {
@@ -161,7 +172,7 @@ const items = [
     concept: "choking-technique",
     mode: "seq",
     payload: {
-      prompt: "Put the infant choking sequence in order.",
+      prompt: "Put the infant choking sequence in order (see the back slap and chest thrust technique cards above for the details of each step).",
       steps: ["5 back slaps", "5 chest thrusts", "Repeat, alternating, until cleared or the infant becomes unconscious"],
     },
   },

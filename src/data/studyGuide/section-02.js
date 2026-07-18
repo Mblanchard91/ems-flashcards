@@ -18,6 +18,7 @@ const items = [
     concept: "consent-types",
     mode: "match",
     payload: {
+      prompt: "Match each type of consent to its definition.",
       pairs: [
         { left: "Expressed consent", right: "Given directly by a competent adult, before treatment starts" },
         { left: "Implied consent", right: "Assumed for an unresponsive/incapacitated patient (the “emergency doctrine”)" },

@@ -119,6 +119,7 @@ const items = [
     concept: "cincinnati-stroke-scale",
     mode: "match",
     payload: {
+      prompt: "Match each Cincinnati Prehospital Stroke Scale test to its abnormal finding.",
       pairs: [
         { left: "Facial droop test", right: "Abnormal: one side of the face droops or doesn't move as well as the other" },
         { left: "Arm drift test", right: "Abnormal: one arm drifts downward compared to the other when both are held out" },
@@ -133,6 +134,7 @@ const items = [
     concept: "medical-direction",
     mode: "match",
     payload: {
+      prompt: "Match each type of medical direction to its definition.",
       pairs: [
         { left: "Online medical direction", right: "Real-time direction via phone or radio from medical control" },
         { left: "Offline medical direction", right: "Standing written protocols/guidelines followed without real-time contact" },

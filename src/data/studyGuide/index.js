@@ -55,7 +55,10 @@ function modesForSection(section) {
       });
     }
   }
-  return [...groups.values()];
+  // Flashcards are ungraded and ordered first, since they're the natural
+  // first pass through content before testing modes. Array.prototype.sort
+  // is stable, so groups keep their relative order within each bucket.
+  return [...groups.values()].sort((a, b) => (b.mode === "flashcard") - (a.mode === "flashcard"));
 }
 
 function itemsForMode(section, mode, deckLabel) {
