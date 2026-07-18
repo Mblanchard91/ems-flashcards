@@ -9,16 +9,21 @@ workflow publish it.
 
 `index.json` is a separate manifest that drives the "User Created
 Flashcards" browse screen on the main landing page. It is **not**
-auto-generated — a deck existing as `<deckId>.json` here does not by
-itself make it appear on that screen; it only appears once you also add
-it to `index.json` (see below). This lets someone share a link-only deck
-without it being publicly browsable.
+auto-generated from the files in this folder — a deck existing as
+`<deckId>.json` does not by itself make it appear on that screen; it
+only appears once it also has an entry in `index.json`. This lets
+someone share a link-only deck without it being publicly browsable.
 
 ## Adding a deck
 
-When a "Build Your Own Deck" submission comes in (via the gmail-deck-bot
-PR, or a GitHub issue), add a file here named `<deckId>.json` (the slug
-from the submission) with this shape:
+For submissions that come in via the [gmail-deck-bot](../../scripts/gmail-deck-bot/),
+this is fully automated — the bot adds `<deckId>.json` here, and (if the
+submitter opted in) an entry to `index.json` too, in the same PR. You
+just review and merge.
+
+If a deck ever needs to be added by hand (e.g. from a GitHub issue
+instead of the email flow), add a file here named `<deckId>.json` with
+this shape:
 
 ```json
 {
@@ -30,18 +35,13 @@ from the submission) with this shape:
 }
 ```
 
-The submission body already contains this exact JSON, ready to paste in.
-
 Once merged and deployed, the permanent link the submitter already has
 (`?deckId=<slug>`) starts working automatically — nothing else changes
 on their end, since that link was generated and shared before the file
 existed.
 
-## Listing a deck on the main page
-
-The submission includes a "list on main page" preference (checked by
-default when the submitter built the deck). If it's `true`, also add an
-entry to `index.json`:
+To also list it on the browse page, add a matching entry to
+`index.json`:
 
 ```json
 {
@@ -50,7 +50,3 @@ entry to `index.json`:
   "cardCount": 12
 }
 ```
-
-If it's `false`, just add the `<deckId>.json` file as above and leave
-`index.json` alone — the deck still works for anyone with the direct
-link, it just won't show up in the browse list.
