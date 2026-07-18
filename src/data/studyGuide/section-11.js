@@ -61,12 +61,30 @@ const items = [
 
   // --- Schizophrenia & excited delirium ---
   {
+    id: "s11-schizophrenia-definition-fc",
+    concept: "schizophrenia",
+    mode: "flashcard",
+    payload: {
+      front: "Schizophrenia — definition?",
+      back: "A chronic mental disorder affecting how a person thinks, feels, and behaves. Severe or untreated cases may seem to lose touch with reality.",
+    },
+  },
+  {
     id: "s11-excited-delirium-fc",
     concept: "excited-delirium",
     mode: "flashcard",
     payload: {
-      front: "Excited (agitated) delirium — what is it, and what triggers it?",
-      back: "Triggered by uncontrolled psychiatric illness and/or drug intoxication. Deadly pattern: the patient suddenly stops struggling, then within minutes has inadequate/absent respirations leading to cardiac arrest. Calming down does not mean recovering — monitor constantly.",
+      front: "Excited (agitated) delirium — what triggers it, and what does it look like?",
+      back: "Triggered by uncontrolled psychiatric illness and/or drug intoxication (usually cocaine or amphetamine use). Presents as bizarre and/or aggressive behavior, shouting, paranoia, panic, violence toward others, insensitivity to pain, unexpected physical strength, and hyperthermia.",
+    },
+  },
+  {
+    id: "s11-excited-delirium-pattern-fc",
+    concept: "excited-delirium",
+    mode: "flashcard",
+    payload: {
+      front: "Excited delirium — the deadly pattern?",
+      back: "The patient suddenly stops struggling, then within minutes has inadequate/absent respirations leading to cardiac arrest. Calming down does not mean recovering — monitor constantly.",
     },
   },
   {
@@ -79,11 +97,33 @@ const items = [
     },
   },
   {
+    id: "s11-excited-delirium-symptoms-multi",
+    concept: "excited-delirium",
+    mode: "multi",
+    payload: {
+      question: "Which of these are part of excited delirium's presenting picture?",
+      choices: [
+        "Bizarre and/or aggressive behavior",
+        "Shouting",
+        "Paranoia",
+        "Panic",
+        "Violence toward others",
+        "Insensitivity to pain",
+        "Unexpected physical strength",
+        "Hyperthermia",
+        "Hypothermia",
+        "Drowsiness or sedation",
+        "Slow, deliberate movements",
+      ],
+      correctIndices: [0, 1, 2, 3, 4, 5, 6, 7],
+    },
+  },
+  {
     id: "s11-psychosis-symptoms-fc",
     concept: "acute-psychosis",
     mode: "flashcard",
     payload: {
-      front: "Acute psychosis/schizophrenia — 4 possible symptom categories?",
+      front: "Acute psychosis (the emergency presentation of schizophrenia) — 4 possible symptom categories?",
       back: "Hallucinations, delusions, catatonia, and thought disorder — one or more may be present.",
     },
   },

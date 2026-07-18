@@ -213,6 +213,15 @@ const items = [
 
   // --- Heart failure sides ---
   {
+    id: "s3-hf-chf-fc",
+    concept: "heart-failure-sides",
+    mode: "flashcard",
+    payload: {
+      front: "Heart failure (HF) — also known as?",
+      back: "Congestive heart failure (CHF) — same condition, interchangeable names.",
+    },
+  },
+  {
     id: "s3-heart-failure-match",
     concept: "heart-failure-sides",
     mode: "match",

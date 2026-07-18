@@ -53,6 +53,24 @@ const items = [
       correctIndex: 0,
     },
   },
+  {
+    id: "s8-nrb-definition-fc",
+    concept: "oxygen-device-definitions",
+    mode: "flashcard",
+    payload: {
+      front: "Nonrebreather (NRB) mask — definition?",
+      back: "A face mask–and–reservoir bag device that delivers high concentrations of oxygen; exhaled air escapes through a valve and is not rebreathed.",
+    },
+  },
+  {
+    id: "s8-nasal-cannula-definition-fc",
+    concept: "oxygen-device-definitions",
+    mode: "flashcard",
+    payload: {
+      front: "Nasal cannula — definition?",
+      back: "A device that delivers low concentrations of oxygen through two prongs that rest in the patient's nostrils.",
+    },
+  },
 
   // --- Open chest wound ---
   {
@@ -66,6 +84,15 @@ const items = [
         "Apply an occlusive dressing over the wound",
         "Burp (lift) one corner of the dressing if the patient develops respiratory distress",
       ],
+    },
+  },
+  {
+    id: "s8-occlusive-dressing-fc",
+    concept: "open-chest-wound",
+    mode: "flashcard",
+    payload: {
+      front: "Occlusive dressing — definition?",
+      back: "Any dressing that forms an airtight seal.",
     },
   },
   {
@@ -107,16 +134,27 @@ const items = [
     },
   },
 
-  // --- Tension pneumothorax vs hemothorax ---
+  // --- Tension pneumothorax vs hemothorax vs hemopneumothorax ---
   {
     id: "s8-pneumo-vs-hemo-match",
     concept: "tension-pneumo-vs-hemothorax",
     mode: "match",
     payload: {
+      prompt: "Match each condition to what fills the chest cavity. (pneumo = air, hemo = blood)",
       pairs: [
-        { left: "Tension pneumothorax", right: "Air trapped in the pleural space under pressure, collapsing the lung and shifting the heart/great vessels" },
-        { left: "Hemothorax", right: "Blood collects in the pleural space, usually from chest trauma" },
+        { left: "Tension pneumothorax", right: "Air, trapped under pressure — collapses the lung and shifts the heart/great vessels" },
+        { left: "Hemothorax", right: "Blood" },
+        { left: "Hemopneumothorax", right: "Both blood and air" },
       ],
+    },
+  },
+  {
+    id: "s8-hemothorax-cause-fc",
+    concept: "tension-pneumo-vs-hemothorax",
+    mode: "flashcard",
+    payload: {
+      front: "Hemothorax/hemopneumothorax — cause and outcome?",
+      back: "Lacerations inside the chest cavity from penetrating objects or fractured ribs. Blood flows into the space around the lung, the lung may collapse, and the patient loses blood — leading to shock. Hemopneumothorax produces the same outcome from the combined blood-and-air buildup. Hemothorax patients will often present with signs of shock.",
     },
   },
 

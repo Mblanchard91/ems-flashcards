@@ -58,8 +58,8 @@ const items = [
     concept: "esophageal-varices",
     mode: "flashcard",
     payload: {
-      front: "Esophageal varices — what are they?",
-      back: "Enlarged, fragile veins in the esophagus, often caused by liver disease (e.g. cirrhosis), that can rupture and cause severe bleeding.",
+      front: "Esophageal varices — what are they, and what causes them?",
+      back: "The esophagus's blood vessels become enlarged and fragile, often from chronic alcohol use or portal hypertension (elevated pressure in the liver's blood supply). If they rupture, it causes massive upper GI bleeding.",
     },
   },
   {
@@ -67,8 +67,8 @@ const items = [
     concept: "esophageal-varices",
     mode: "flashcard",
     payload: {
-      front: "Esophageal varices — signs/symptoms?",
-      back: "Vomiting blood (hematemesis), which may be bright red or look like coffee grounds; signs of shock if bleeding is severe.",
+      front: "Esophageal varices — signs/symptoms, and why is this presentation especially dangerous?",
+      back: "Vomiting large amounts of blood (hematemesis) — the ruptured vessel's blood enters the stomach, irritates the lining, and gets vomited up. This creates a double danger: shock from blood loss, and airway compromise from the sheer volume of blood being vomited.",
     },
   },
   {

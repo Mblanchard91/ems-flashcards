@@ -76,6 +76,15 @@ const items = [
     },
   },
   {
+    id: "s5-stroke-cva-fc",
+    concept: "stroke-naming",
+    mode: "flashcard",
+    payload: {
+      front: "Stroke was formerly known by what term?",
+      back: "Cerebrovascular accident (CVA) — an older term that may still appear on the exam.",
+    },
+  },
+  {
     id: "s5-cincinnati-match",
     concept: "cincinnati-stroke-scale",
     mode: "match",

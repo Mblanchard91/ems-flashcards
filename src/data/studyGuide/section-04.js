@@ -60,6 +60,109 @@ const items = [
     },
   },
 
+  // --- Shock: 5 causal types ---
+  {
+    id: "s4-shock-hypovolemic-fc",
+    concept: "shock-types",
+    mode: "flashcard",
+    payload: {
+      front: "Hypovolemic shock — cause?",
+      back: "Shock resulting from blood or fluid loss.",
+    },
+  },
+  {
+    id: "s4-shock-cardiogenic-fc",
+    concept: "shock-types",
+    mode: "flashcard",
+    payload: {
+      front: "Cardiogenic shock — cause?",
+      back: "Shock (lack of perfusion) brought on not by blood loss but by the heart's inadequate pumping action — often the result of a heart attack (MI) or congestive heart failure.",
+    },
+  },
+  {
+    id: "s4-shock-obstructive-fc",
+    concept: "shock-types",
+    mode: "flashcard",
+    payload: {
+      front: "Obstructive shock — cause?",
+      back: "Term for the different conditions that block the flow of blood and cause hypoperfusion.",
+    },
+  },
+  {
+    id: "s4-shock-distributive-fc",
+    concept: "shock-types",
+    mode: "flashcard",
+    payload: {
+      front: "Distributive shock — cause?",
+      back: "Hypoperfusion due to a lack of blood vessel tone — blood vessel dilation leads to decreased pressure within the circulatory system.",
+    },
+  },
+  {
+    id: "s4-shock-neurogenic-fc",
+    concept: "shock-types",
+    mode: "flashcard",
+    payload: {
+      front: "Neurogenic shock — cause?",
+      back: "Hypoperfusion caused by a spinal cord injury that results in systemic vasodilation and nerve paralysis.",
+    },
+  },
+  {
+    id: "s4-shock-types-match",
+    concept: "shock-types",
+    mode: "match",
+    payload: {
+      prompt: "Match each type of shock to its cause.",
+      pairs: [
+        { left: "Hypovolemic shock", right: "Blood or fluid loss" },
+        { left: "Cardiogenic shock", right: "The heart's inadequate pumping action — often from MI or CHF" },
+        { left: "Obstructive shock", right: "Conditions that block the flow of blood" },
+        { left: "Distributive shock", right: "Lack of blood vessel tone — vessel dilation drops circulatory pressure" },
+        { left: "Neurogenic shock", right: "Spinal cord injury causing systemic vasodilation and nerve paralysis" },
+      ],
+    },
+  },
+  {
+    id: "s4-shock-hemorrhagic-fc",
+    concept: "shock-types",
+    mode: "flashcard",
+    payload: {
+      front: "Is hemorrhagic shock a 6th type of shock?",
+      back: "No — it's a subtype of hypovolemic shock, specifically the bleeding-caused subset (hypovolemic shock caused by blood loss).",
+    },
+  },
+
+  // --- Shock: 2 stages ---
+  {
+    id: "s4-shock-compensated-fc",
+    concept: "shock-stages",
+    mode: "flashcard",
+    payload: {
+      front: "Compensated shock — what's happening?",
+      back: "The period when the patient is developing shock but the body is still able to maintain perfusion.",
+    },
+  },
+  {
+    id: "s4-shock-decompensated-fc",
+    concept: "shock-stages",
+    mode: "flashcard",
+    payload: {
+      front: "Decompensated shock — what's happening?",
+      back: "The period when the body can no longer compensate for low blood volume or lack of perfusion — late signs such as decreasing blood pressure become evident.",
+    },
+  },
+  {
+    id: "s4-shock-stages-match",
+    concept: "shock-stages",
+    mode: "match",
+    payload: {
+      prompt: "Match each stage of shock to what's happening in the body.",
+      pairs: [
+        { left: "Compensated shock", right: "Developing shock, but the body is still maintaining perfusion" },
+        { left: "Decompensated shock", right: "The body can no longer compensate — late signs like falling blood pressure appear" },
+      ],
+    },
+  },
+
   // --- Fontanelles ---
   {
     id: "s4-fontanelle-sunken-fc",

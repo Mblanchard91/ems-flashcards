@@ -4,6 +4,15 @@
 const items = [
   // --- Spinal injury ---
   {
+    id: "s7-manual-stabilization-fc",
+    concept: "spinal-injury-treatment",
+    mode: "flashcard",
+    payload: {
+      front: "Manual stabilization — definition?",
+      back: "Using one's hands to prevent movement of the patient's head and neck until a cervical collar can be applied.",
+    },
+  },
+  {
     id: "s7-spinal-seq",
     concept: "spinal-injury-treatment",
     mode: "seq",
@@ -89,6 +98,15 @@ const items = [
     },
   },
   {
+    id: "s7-dislocation-definition-fc",
+    concept: "fracture-splinting-rules",
+    mode: "flashcard",
+    payload: {
+      front: "Dislocation — definition?",
+      back: "The disruption or “coming apart” of a joint.",
+    },
+  },
+  {
     id: "s7-dislocation-fc",
     concept: "fracture-splinting-rules",
     mode: "flashcard",
@@ -158,7 +176,7 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Compartment syndrome — what is it?",
-      back: "A serious complication of an extremity fracture or crush injury, caused by severe swelling within the muscle compartment that cuts off perfusion to the tissue.",
+      back: "Injury caused when tissues such as blood vessels and nerves are constricted within a space — from swelling, or from a tight dressing or cast. Extremity fracture/crush injury is the classic EMS cause, but a too-tight splint or cast can cause it too.",
     },
   },
   {
@@ -176,7 +194,7 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Compartment syndrome — treatment?",
-      back: "Same as fracture care: cold application, elevation (if safe after splinting), and prompt transport.",
+      back: "Same as fracture care: cold application, elevation (if safe after splinting), and prompt transport. If a dressing, cast, or splint you applied is the cause, loosen it.",
     },
   },
   {
@@ -230,7 +248,7 @@ const items = [
       pairs: [
         { left: "Spleen destruction", right: "Increased infection risk" },
         { left: "Acute chest syndrome", right: "Shortness of breath and chest pain from hypoxia" },
-        { left: "Priapism", right: "Prolonged, painful erection caused by sludged blood flow" },
+        { left: "Priapism", right: "Prolonged, painful erection — in sickle cell, caused by sludged blood flow (can also result from spinal injury or other medical problems)" },
         { left: "Stroke", right: "Sludged blood flow blocking circulation to the brain" },
         { left: "Jaundice", right: "Yellowing of the skin/eyes from rapid red blood cell breakdown" },
       ],
