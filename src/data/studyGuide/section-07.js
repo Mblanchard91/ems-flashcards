@@ -31,6 +31,40 @@ const items = [
     },
   },
 
+  // --- Trauma Center designations ---
+  {
+    id: "s7-trauma-center-match",
+    concept: "trauma-center-designations",
+    mode: "match",
+    payload: {
+      prompt: "Match each trauma center level to its capability.",
+      pairs: [
+        { left: "Level I", right: "Regional Trauma Center — manages all types of trauma, 24/7" },
+        { left: "Level II", right: "Area Trauma Center — most trauma with surgical capability, 24/7; transfers specialized cases to Level I" },
+        { left: "Level III", right: "Community Trauma Center — some surgical capability; stabilizes before transfer to a higher level" },
+        { left: "Level IV", right: "Trauma Facility — small/remote hospital; stabilizes before transfer to a higher level" },
+      ],
+    },
+  },
+  {
+    id: "s7-trauma-center-level1-fc",
+    concept: "trauma-center-designations",
+    mode: "flashcard",
+    payload: {
+      front: "What's a Level I Trauma Center?",
+      back: "A Regional Trauma Center — manages all types of trauma, 24/7.",
+    },
+  },
+  {
+    id: "s7-trauma-center-level4-fc",
+    concept: "trauma-center-designations",
+    mode: "flashcard",
+    payload: {
+      front: "What's a Level IV Trauma Center?",
+      back: "A Trauma Facility — typically a small, remote community hospital that stabilizes seriously injured patients before transferring to a higher-level center.",
+    },
+  },
+
   // --- Bleeding control ---
   {
     id: "s7-bleeding-seq",
@@ -52,7 +86,7 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Should you remove an impaled object when controlling bleeding?",
-      back: "No — never remove an impaled object. Stabilize it in place and control bleeding around it.",
+      back: "No — never remove an impaled object. Stabilize it in place and control bleeding around it. If it's too large to transport, cut and secure it with bandaging rather than removing it.",
     },
   },
 

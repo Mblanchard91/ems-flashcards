@@ -19,10 +19,10 @@ const items = [
     mode: "match",
     payload: {
       pairs: [
-        { left: "Expressed consent", right: "Patient directly agrees (verbally or by action) after being informed of the treatment" },
-        { left: "Implied consent", right: "Assumed for an unresponsive/incapacitated patient who would want life-saving care" },
-        { left: "Minor consent", right: "A parent or legal guardian must consent; implied consent applies in emergencies if unavailable" },
-        { left: "Involuntary consent", right: "Required by law for certain patients (e.g. police custody, mental health hold) even if they refuse" },
+        { left: "Expressed consent", right: "Given directly by a competent adult, before treatment starts" },
+        { left: "Implied consent", right: "Assumed for an unresponsive/incapacitated patient (the “emergency doctrine”)" },
+        { left: "Minor consent", right: "From a parent/guardian; not required for an emancipated minor" },
+        { left: "Involuntary consent", right: "Obtained through a third party for an incompetent or incarcerated patient" },
       ],
     },
   },
@@ -32,7 +32,7 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Expressed consent — definition?",
-      back: "The patient directly agrees, verbally or through their actions, to receive treatment after being informed of what will be done.",
+      back: "Must be obtained from every conscious adult with the capacity to make a rational decision, before treatment starts. The patient must be of legal age, able to understand and make a rational decision, and informed (in terms they understand) of the assessment/procedures and related risks. Verbal confirmation is preferred, but nonverbal cues (e.g. nodding) are acceptable too — document the patient's approval.",
     },
   },
   {
@@ -41,7 +41,25 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Implied consent — definition?",
-      back: "Assumed for an unresponsive or incapacitated patient, under the reasoning that a reasonable person would want life-saving treatment.",
+      back: "Also called the \"emergency doctrine.\" You assume an unresponsive patient, or one unable to make a rational decision (e.g. disoriented from a head injury), would consent to emergency care if they could. Also applies if a patient initially refuses care but then becomes unresponsive/incapacitated/irrational. Used when the patient is at significant risk of death, disability, or deterioration.",
+    },
+  },
+  {
+    id: "s2-consent-minor-fc",
+    concept: "consent-types",
+    mode: "flashcard",
+    payload: {
+      front: "Minor consent — definition?",
+      back: "Obtained from a parent, legal guardian, or someone granted limited decision rights by them (teacher, stepparent, etc.). Minors generally can't accept/refuse care themselves; if a parent/guardian can't be reached, implied consent applies (document the circumstances). An emancipated minor (married, pregnant, a parent, in the armed forces, financially independent and living away from home, or court-declared emancipated) does not need parental consent.",
+    },
+  },
+  {
+    id: "s2-consent-involuntary-fc",
+    concept: "consent-types",
+    mode: "flashcard",
+    payload: {
+      front: "Involuntary consent — definition?",
+      back: "Applies to a mentally incompetent adult, or someone in law enforcement custody/incarcerated. Consent is obtained through a third party (legal guardian, law enforcement officer, or other court officer) since the patient doesn't have the legal right to determine their own care.",
     },
   },
 

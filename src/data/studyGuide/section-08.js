@@ -72,6 +72,28 @@ const items = [
     },
   },
 
+  // --- Aerobic vs. anaerobic metabolism ---
+  {
+    id: "s8-metabolism-fc",
+    concept: "metabolism",
+    mode: "flashcard",
+    payload: {
+      front: "Aerobic vs. anaerobic metabolism — what's the difference?",
+      back: "Aerobic metabolism uses oxygen to metabolize glucose — efficient, minimal waste products. Anaerobic metabolism metabolizes glucose into energy without oxygen — inefficient, produces lactic acid, which makes the body more acidotic, injures cells, and limits the blood's ability to carry oxygen.",
+    },
+  },
+  {
+    id: "s8-metabolism-match",
+    concept: "metabolism",
+    mode: "match",
+    payload: {
+      pairs: [
+        { left: "Aerobic metabolism", right: "Uses oxygen to metabolize glucose; efficient, minimal waste products" },
+        { left: "Anaerobic metabolism", right: "Metabolizes glucose without oxygen; inefficient, produces lactic acid" },
+      ],
+    },
+  },
+
   // --- Open chest wound ---
   {
     id: "s8-open-chest-seq",
@@ -146,6 +168,15 @@ const items = [
         { left: "Hemothorax", right: "Blood" },
         { left: "Hemopneumothorax", right: "Both blood and air" },
       ],
+    },
+  },
+  {
+    id: "s8-tension-pneumo-mechanism-fc",
+    concept: "tension-pneumo-vs-hemothorax",
+    mode: "flashcard",
+    payload: {
+      front: "Tension pneumothorax — what actually happens mechanically?",
+      back: "An open chest wound leads to a buildup of air and pressure on the injured side of the thoracic cavity so severe that it begins to shift the heart, lungs, and large blood vessels toward the body's uninjured side, compressing those organs.",
     },
   },
   {

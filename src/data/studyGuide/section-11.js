@@ -58,6 +58,24 @@ const items = [
       correctIndices: [0, 2, 5],
     },
   },
+  {
+    id: "s11-suicide-treatment-sequence-multi",
+    concept: "suicide-patient-treatment-sequence",
+    mode: "multi",
+    payload: {
+      question: "Which of these are correct steps when treating a suicidal patient?",
+      choices: [
+        "Ensure your own safety first",
+        "Assess the patient for medical or trauma injuries",
+        "Calm the patient and stay with them",
+        "Use restraints to protect yourself, others, or the patient from harm if needed",
+        "Transport to a facility for psychological treatment",
+        "Leave the patient alone to de-escalate",
+        "Restrain the patient immediately regardless of need",
+      ],
+      correctIndices: [0, 1, 2, 3, 4],
+    },
+  },
 
   // --- Schizophrenia & excited delirium ---
   {

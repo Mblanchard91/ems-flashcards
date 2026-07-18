@@ -20,6 +20,15 @@ const items = [
 
   // --- Newborn ventilation/CPR thresholds ---
   {
+    id: "s10-newborn-normal-rr-fc",
+    concept: "newborn-thresholds",
+    mode: "flashcard",
+    payload: {
+      front: "What's a normal newborn respiratory rate?",
+      back: "40–60 breaths/min — this is the reference range \"inadequate\" breathing is judged against.",
+    },
+  },
+  {
     id: "s10-newborn-hr60-100-fc",
     concept: "newborn-thresholds",
     mode: "flashcard",
@@ -84,7 +93,7 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Normal amniotic fluid — volume and appearance?",
-      back: "About 500 mL, clear.",
+      back: "About 500 mL, clear and odorless.",
     },
   },
   {
@@ -93,7 +102,7 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Prolapsed umbilical cord — protocol?",
-      back: "Position the mother to relieve pressure on the cord (e.g. knee-chest position), do not push the cord back in, keep it moist, and transport immediately.",
+      back: "Position the mother to relieve pressure on the cord (e.g. knee-chest position). This is the only situation where an EMT inserts gloved fingers into the birth canal — to push or hold the baby's head off the cord, especially during contractions. Do not push the cord back in, keep it moist, and transport immediately.",
     },
   },
   {
