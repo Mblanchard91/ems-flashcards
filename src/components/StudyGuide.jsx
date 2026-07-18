@@ -211,6 +211,7 @@ function StudyGuide({ onExit }) {
               <span className={styles.cardTitle}>{label}</span>
               <span className={styles.cardMeta}>
                 {count} item{count === 1 ? "" : "s"}
+                {m === "flashcard" && " — not included in All Questions"}
               </span>
             </button>
           ))}

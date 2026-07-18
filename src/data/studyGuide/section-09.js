@@ -55,6 +55,7 @@ const items = [
     concept: "burn-degrees",
     mode: "match",
     payload: {
+      prompt: "Match each burn degree to its description.",
       pairs: [
         { left: "Superficial (1st degree)", right: "Epidermis only; redness, mild swelling; heals without scarring (e.g. sunburn)" },
         { left: "Partial thickness (2nd degree)", right: "Epidermis + dermis damaged; deep pain, blisters, mottled appearance; heals with little scarring" },

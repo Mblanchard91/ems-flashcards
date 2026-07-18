@@ -166,6 +166,11 @@
   /* Safety net for content too long even at the smallest size class below —
      scrolls within the card instead of visually overflowing its edges. */
   overflow-y: auto;
+  /* Without this, some browsers (notably iOS Safari) let this nested
+     scrollable region re-enable native touch panning even though the
+     .stage ancestor sets touch-action: none — that's what let a swipe
+     drag also scroll the card content. Pin it here too. */
+  touch-action: none;
 }
 
 .front {

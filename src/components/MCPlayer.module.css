@@ -67,6 +67,11 @@
   color: var(--color-primary-dark);
 }
 
+.skipRow {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
 .choices {
   display: flex;
   flex-direction: column;

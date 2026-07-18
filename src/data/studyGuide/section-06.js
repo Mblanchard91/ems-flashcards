@@ -134,6 +134,7 @@ const items = [
     concept: "abdominal-emergencies",
     mode: "match",
     payload: {
+      prompt: "Match each abdominal emergency to its defining presentation.",
       pairs: [
         { left: "Ectopic pregnancy", right: "Sharp, one-sided lower abdominal pain in a pregnant patient, often with vaginal bleeding" },
         { left: "Appendicitis", right: "Pain that starts near the navel and moves to the right lower quadrant (RLQ), often with fever" },

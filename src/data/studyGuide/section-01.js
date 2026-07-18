@@ -8,6 +8,7 @@ const items = [
     concept: "positioning-by-complaint",
     mode: "match",
     payload: {
+      prompt: "Match the chief complaint/condition to the correct patient positioning.",
       pairs: [
         { left: "Unresponsive, no spinal injury suspected", right: "Left lateral recumbent (recovery position)" },
         { left: "Chest pain / breathing difficulty", right: "Position of comfort — usually sitting" },

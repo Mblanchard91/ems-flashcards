@@ -29,6 +29,11 @@ function SequencePlayer({ items, onBack, onFinish }) {
     }
   };
 
+  const handleSkip = () => {
+    if (status !== null) return;
+    setStatus("incorrect");
+  };
+
   const handleUndo = () => {
     if (status !== null || placed.length === 0) return;
     setPlaced((p) => p.slice(0, -1));
@@ -98,7 +103,12 @@ function SequencePlayer({ items, onBack, onFinish }) {
 
       {status === null && (
         <>
-          <p className={styles.hint}>Tap steps in the order they belong</p>
+          <div className={styles.hintRow}>
+            <p className={styles.hint}>Tap steps in the order they belong</p>
+            <button type="button" className="btn-skip" onClick={handleSkip}>
+              Skip — show answer
+            </button>
+          </div>
           <div className={styles.pool}>
             {remaining.map((entry) => (
               <button

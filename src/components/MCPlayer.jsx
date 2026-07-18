@@ -22,6 +22,19 @@ function MCPlayer({ items, onBack, onFinish }) {
     setSelected(i);
   };
 
+  const handleSkip = () => {
+    if (submitted) return;
+    setSubmitted(true);
+    setMissed((m) => [
+      ...m,
+      {
+        id: item.id,
+        prompt: question,
+        correctAnswerText: shuffledChoices.find((c) => c.correct).text,
+      },
+    ]);
+  };
+
   const handleSubmit = () => {
     if (!submitted) {
       setSubmitted(true);
@@ -78,6 +91,14 @@ function MCPlayer({ items, onBack, onFinish }) {
       <div className={styles.questionCard}>
         <span className={styles.question}>{question}</span>
       </div>
+
+      {!submitted && (
+        <div className={styles.skipRow}>
+          <button type="button" className="btn-skip" onClick={handleSkip}>
+            Skip — show answer
+          </button>
+        </div>
+      )}
 
       <div className={styles.choices}>
         {shuffledChoices.map((choice, i) => (

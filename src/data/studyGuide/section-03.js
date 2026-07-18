@@ -130,6 +130,7 @@ const items = [
     concept: "drag-techniques-overview",
     mode: "match",
     payload: {
+      prompt: "Match each drag/move technique to its description.",
       pairs: [
         { left: "Clothing drag", right: "Dragged by the clothing; used only in emergencies, doesn't protect the spine" },
         { left: "Blanket drag", right: "Patient rolled onto a blanket, then dragged by it" },
@@ -217,8 +218,8 @@ const items = [
     concept: "heart-failure-sides",
     mode: "flashcard",
     payload: {
-      front: "Heart failure (HF) — also known as?",
-      back: "Congestive heart failure (CHF) — same condition, interchangeable names.",
+      front: "Congestive heart failure (CHF) — what is it?",
+      back: "Heart failure in which fluid backs up/congests the lungs and/or body due to the heart's inadequate pumping. \"HF\" and \"CHF\" are used near-interchangeably in EMS, but CHF specifically refers to the fluid-congestion presentation.",
     },
   },
   {
@@ -226,6 +227,7 @@ const items = [
     concept: "heart-failure-sides",
     mode: "match",
     payload: {
+      prompt: "Match the side of heart failure to its signs.",
       pairs: [
         { left: "Left-sided heart failure", right: "Pulmonary edema (fluid backs up into the lungs)" },
         { left: "Right-sided heart failure", right: "Peripheral edema, JVD, and liver enlargement (fluid backs up into the body)" },

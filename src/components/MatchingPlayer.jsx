@@ -10,6 +10,7 @@ function MatchingPlayer({ items, onBack, onFinish }) {
   const [matched, setMatched] = useState(new Set()); // pairIndex values
   const [wrongFlash, setWrongFlash] = useState(null); // { leftIdx, rightIdx } | null
   const [wrongCount, setWrongCount] = useState(0);
+  const [skipped, setSkipped] = useState(false);
   const [missed, setMissed] = useState([]);
   const timeoutRef = useRef(null);
 
@@ -17,6 +18,11 @@ function MatchingPlayer({ items, onBack, onFinish }) {
   const { pairs, prompt } = item.payload;
   const isLast = index === items.length - 1;
   const isComplete = matched.size === pairs.length;
+
+  const shuffledLeft = useMemo(
+    () => shuffle(pairs.map((pair, pairIndex) => ({ text: pair.left, pairIndex }))),
+    [pairs]
+  );
 
   const shuffledRight = useMemo(
     () => shuffle(pairs.map((pair, pairIndex) => ({ text: pair.right, pairIndex }))),
@@ -27,7 +33,7 @@ function MatchingPlayer({ items, onBack, onFinish }) {
 
   const handleTap = (side, idx) => {
     if (wrongFlash) return;
-    const pairIndex = side === "left" ? idx : shuffledRight[idx].pairIndex;
+    const pairIndex = side === "left" ? shuffledLeft[idx].pairIndex : shuffledRight[idx].pairIndex;
     if (matched.has(pairIndex)) return;
 
     if (!selected) {
@@ -42,7 +48,7 @@ function MatchingPlayer({ items, onBack, onFinish }) {
 
     const leftIdx = side === "left" ? idx : selected.idx;
     const rightIdx = side === "right" ? idx : selected.idx;
-    const leftPairIndex = leftIdx;
+    const leftPairIndex = shuffledLeft[leftIdx].pairIndex;
     const rightPairIndex = shuffledRight[rightIdx].pairIndex;
 
     if (leftPairIndex === rightPairIndex) {
@@ -58,9 +64,16 @@ function MatchingPlayer({ items, onBack, onFinish }) {
     }
   };
 
+  const handleSkip = () => {
+    if (wrongFlash || isComplete) return;
+    setSelected(null);
+    setMatched(new Set(pairs.map((_, i) => i)));
+    setSkipped(true);
+  };
+
   const handleContinue = () => {
     const newMissed =
-      wrongCount > 0
+      wrongCount > 0 || skipped
         ? [
             ...missed,
             {
@@ -82,10 +95,12 @@ function MatchingPlayer({ items, onBack, onFinish }) {
     setMatched(new Set());
     setWrongFlash(null);
     setWrongCount(0);
+    setSkipped(false);
   };
 
   const leftClass = (i) => {
-    if (matched.has(i)) return styles.cardMatched;
+    const pairIndex = shuffledLeft[i].pairIndex;
+    if (matched.has(pairIndex)) return styles.cardMatched;
     if (wrongFlash?.leftIdx === i) return styles.cardWrong;
     if (selected?.side === "left" && selected.idx === i) return styles.cardSelected;
     return "";
@@ -118,19 +133,26 @@ function MatchingPlayer({ items, onBack, onFinish }) {
       </div>
 
       {prompt && <p className={styles.prompt}>{prompt}</p>}
-      <p className={styles.hint}>Tap a term, then tap its match</p>
+      <div className={styles.hintRow}>
+        <p className={styles.hint}>Tap a term, then tap its match</p>
+        {!isComplete && (
+          <button type="button" className="btn-skip" onClick={handleSkip}>
+            Skip — show answer
+          </button>
+        )}
+      </div>
 
       <div className={styles.columns}>
         <div className={styles.column}>
-          {pairs.map((pair, i) => (
+          {shuffledLeft.map((entry, i) => (
             <button
               key={i}
               type="button"
               className={`${styles.card} ${leftClass(i)}`}
               onClick={() => handleTap("left", i)}
-              disabled={matched.has(i)}
+              disabled={matched.has(entry.pairIndex)}
             >
-              {pair.left}
+              {entry.text}
             </button>
           ))}
         </div>
