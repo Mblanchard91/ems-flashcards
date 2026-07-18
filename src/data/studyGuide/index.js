@@ -34,20 +34,34 @@ const MODE_LABELS = {
   seq: "Sequence",
 };
 
+// Items can optionally carry a `deckLabel` to split a single mode into
+// multiple selectable sub-decks within one section (e.g. Section 12's
+// vocabulary terms vs. its abbreviations, both flashcard-mode but shown
+// as two separate buttons). Items without a deckLabel behave as before,
+// grouped only by mode.
 function modesForSection(section) {
-  const counts = new Map();
+  const groups = new Map();
   for (const item of section.items) {
-    counts.set(item.mode, (counts.get(item.mode) || 0) + 1);
+    const key = item.mode + "::" + (item.deckLabel || "");
+    const existing = groups.get(key);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      groups.set(key, {
+        mode: item.mode,
+        deckLabel: item.deckLabel || null,
+        label: item.deckLabel || MODE_LABELS[item.mode] || item.mode,
+        count: 1,
+      });
+    }
   }
-  return [...counts.entries()].map(([mode, count]) => ({
-    mode,
-    label: MODE_LABELS[mode] || mode,
-    count,
-  }));
+  return [...groups.values()];
 }
 
-function itemsForMode(section, mode) {
-  return section.items.filter((item) => item.mode === mode);
+function itemsForMode(section, mode, deckLabel) {
+  return section.items.filter(
+    (item) => item.mode === mode && (item.deckLabel || null) === (deckLabel || null)
+  );
 }
 
 export { sections, modesForSection, itemsForMode, MODE_LABELS };
