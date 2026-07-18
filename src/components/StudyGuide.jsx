@@ -51,9 +51,9 @@ function StudyGuide({ onExit }) {
     setScreen("modes");
   };
 
-  const openMode = (m) => {
+  const openMode = (m, deckLabel) => {
     setMode(m);
-    setPlayItems(shuffle(itemsForMode(section, m)));
+    setPlayItems(shuffle(itemsForMode(section, m, deckLabel)));
     setQueue(null);
     setScreen("play");
   };
@@ -158,7 +158,7 @@ function StudyGuide({ onExit }) {
         >
           <span className={styles.cardEyebrow}>🔀 Shuffle</span>
           <span className={styles.cardTitle}>All Sections</span>
-          <span className={styles.cardMeta}>{allSectionsCount} items across all 12 sections</span>
+          <span className={styles.cardMeta}>{allSectionsCount} items across all {sections.length} sections</span>
         </button>
 
         <div className={styles.list}>
@@ -201,8 +201,13 @@ function StudyGuide({ onExit }) {
         )}
 
         <div className={styles.list}>
-          {modesForSection(section).map(({ mode: m, label, count }) => (
-            <button key={m} type="button" className={styles.card} onClick={() => openMode(m)}>
+          {modesForSection(section).map(({ mode: m, deckLabel, label, count }) => (
+            <button
+              key={`${m}::${deckLabel || ""}`}
+              type="button"
+              className={styles.card}
+              onClick={() => openMode(m, deckLabel)}
+            >
               <span className={styles.cardTitle}>{label}</span>
               <span className={styles.cardMeta}>
                 {count} item{count === 1 ? "" : "s"}
