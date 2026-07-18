@@ -163,6 +163,9 @@
   justify-content: center;
   text-align: center;
   padding: 32px;
+  /* Safety net for content too long even at the smallest size class below —
+     scrolls within the card instead of visually overflowing its edges. */
+  overflow-y: auto;
 }
 
 .front {
@@ -182,10 +185,26 @@
   line-height: 1.3;
 }
 
+.termLong {
+  font-size: 1.3rem;
+}
+
+.termXLong {
+  font-size: 1.1rem;
+}
+
 .definition {
   font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.4;
+}
+
+.definitionLong {
+  font-size: 1.15rem;
+}
+
+.definitionXLong {
+  font-size: 0.95rem;
 }
 
 .hint {

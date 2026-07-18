@@ -4,6 +4,15 @@ import styles from "./Flashcards.module.css";
 
 const SETTLE_MS = 280;
 
+// Longer card text needs a smaller font to fit without overflowing the
+// fixed-size card — these thresholds were picked against the longest
+// content in the guide (multi-sentence technique descriptions).
+function lengthClass(styles, base, text) {
+  if (text.length > 260) return `${styles[base]} ${styles[`${base}XLong`]}`;
+  if (text.length > 140) return `${styles[base]} ${styles[`${base}Long`]}`;
+  return styles[base];
+}
+
 function CardFace({ card, flipped, onClick }) {
   return (
     <div
@@ -11,10 +20,10 @@ function CardFace({ card, flipped, onClick }) {
       onClick={onClick}
     >
       <div className={`${styles.face} ${styles.front}`}>
-        <span className={styles.term}>{card.term}</span>
+        <span className={lengthClass(styles, "term", card.term)}>{card.term}</span>
       </div>
       <div className={`${styles.face} ${styles.back}`}>
-        <span className={styles.definition}>{card.definition}</span>
+        <span className={lengthClass(styles, "definition", card.definition)}>{card.definition}</span>
       </div>
     </div>
   );
