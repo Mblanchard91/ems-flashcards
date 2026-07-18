@@ -32,7 +32,6 @@ const MODE_LABELS = {
   multi: "Select All That Apply",
   match: "Matching",
   seq: "Sequence",
-  fib: "Fill in the Blank",
 };
 
 function modesForSection(section) {
