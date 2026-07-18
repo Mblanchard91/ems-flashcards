@@ -13,11 +13,13 @@ function Home({ settings, onSettingsChange, onStartFlashcards, onStartQuiz, onBa
 
   return (
     <div className={styles.screen}>
-      <div className={styles.header}>
-        <button type="button" className="btn btn-ghost" onClick={onBack}>
-          ‹ Back
-        </button>
-      </div>
+      {onBack && (
+        <div className={styles.header}>
+          <button type="button" className="btn btn-ghost" onClick={onBack}>
+            ‹ Back
+          </button>
+        </div>
+      )}
 
       <div className={styles.eyebrow}>EMS Study Cards</div>
       <h1 className={styles.title}>Abbreviations &amp; Mnemonics</h1>

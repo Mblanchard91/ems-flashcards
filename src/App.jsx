@@ -42,11 +42,18 @@ function readDeckLinkParams() {
   return { deckData: params.get("deckData"), deckId: params.get("deckId") };
 }
 
+// A locked deep link (?view=abbreviations) drops the visitor straight into
+// the Abbreviations & Mnemonics screen with no way back to the rest of the
+// app — for sharing just that deck with another class.
+const isLockedAbbreviations = new URLSearchParams(window.location.search).get("view") === "abbreviations";
+
 function App() {
   const [settings, setSettings] = useLocalStorageState(SETTINGS_KEY, DEFAULT_SETTINGS);
-  const [screen, setScreen] = useState(() =>
-    readDeckLinkParams().deckId ? "resolving" : "home"
-  );
+  const [screen, setScreen] = useState(() => {
+    if (readDeckLinkParams().deckId) return "resolving";
+    if (isLockedAbbreviations) return "abbreviations";
+    return "home";
+  });
   const [deck, setDeck] = useState([]);
   const [quizResult, setQuizResult] = useState(null);
   const [customDeck, setCustomDeck] = useState(null);
@@ -154,7 +161,7 @@ function App() {
           onSettingsChange={setSettings}
           onStartFlashcards={startFlashcards}
           onStartQuiz={startQuiz}
-          onBack={goHome}
+          onBack={isLockedAbbreviations ? null : goHome}
         />
       )}
       {screen === "community" && (
