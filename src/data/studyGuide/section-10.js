@@ -144,7 +144,7 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "Infant (<1 year), severe choking — technique?",
-      back: "5 back slaps (infant prone along your forearm, head lower than body, heel of hand between shoulder blades) alternating with 5 chest thrusts (turn infant supine, head still lower than body, 2 fingers on lower sternum just below the nipple line, compress about half the chest's depth, 1 compression/second).",
+      back: "5 back slaps (infant prone along your forearm, head lower than body, heel of hand between shoulder blades) alternating with 5 chest thrusts (turn infant supine, head still lower than body, 2 fingers on lower sternum just below the nipple line, compress one-third the anterior-posterior depth of the chest — about 1.5 inches (3.8 cm) — 1 compression/second).",
     },
   },
   {
