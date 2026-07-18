@@ -58,18 +58,21 @@ const items = [
     },
   },
   {
-    id: "s1-size-up-seq",
+    id: "s1-size-up-multi",
     concept: "scene-size-up-order",
-    mode: "seq",
+    mode: "multi",
     payload: {
-      prompt: "Put the scene size-up steps in order.",
-      steps: [
-        "Perform initial scene size-up (visual survey)",
+      question: "Which of these are part of scene size-up?",
+      choices: [
+        "Perform an initial visual survey of the scene",
         "Evaluate scene hazards",
         "Determine MOI (mechanism of injury) or NOI (nature of illness)",
         "Determine patient count",
         "Determine resource needs",
+        "Begin treatment before assessing for hazards",
+        "Assume the scene is safe once you arrive",
       ],
+      correctIndices: [0, 1, 2, 3, 4],
     },
   },
   {
@@ -121,12 +124,19 @@ const items = [
 
   // --- Secondary assessment ---
   {
-    id: "s1-secondary-assessment-seq",
+    id: "s1-secondary-assessment-multi",
     concept: "secondary-assessment",
-    mode: "seq",
+    mode: "multi",
     payload: {
-      prompt: "Put the secondary assessment steps in order.",
-      steps: ["Physical exam", "Vital signs", "Patient history"],
+      question: "Which of these are components of the secondary assessment?",
+      choices: [
+        "Physical exam",
+        "Vital signs",
+        "Patient history",
+        "General impression",
+        "Determining mechanism of injury (MOI)",
+      ],
+      correctIndices: [0, 1, 2],
     },
   },
 

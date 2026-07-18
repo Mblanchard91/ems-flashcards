@@ -6,13 +6,12 @@ import MCPlayer from "./MCPlayer.jsx";
 import MultiSelectPlayer from "./MultiSelectPlayer.jsx";
 import MatchingPlayer from "./MatchingPlayer.jsx";
 import SequencePlayer from "./SequencePlayer.jsx";
-import FIBPlayer from "./FIBPlayer.jsx";
 import StudyGuideSummary from "./StudyGuideSummary.jsx";
 import styles from "./StudyGuide.module.css";
 
 // Flashcards aren't graded, so they're excluded from "All Questions" —
 // a session there needs a meaningful score out of a total.
-const GRADABLE_MODES = ["mc", "multi", "match", "seq", "fib"];
+const GRADABLE_MODES = ["mc", "multi", "match", "seq"];
 
 const ALL_SECTIONS_VIRTUAL = {
   id: "all",
@@ -229,9 +228,6 @@ function StudyGuide({ onExit }) {
   }
   if (screen === "play" && mode === "seq") {
     return <SequencePlayer items={playItems} onBack={backToModes} onFinish={handleFinish} />;
-  }
-  if (screen === "play" && mode === "fib") {
-    return <FIBPlayer items={playItems} onBack={backToModes} onFinish={handleFinish} />;
   }
 
   if (screen === "summary" && result) {

@@ -64,31 +64,33 @@ const items = [
     },
   },
   {
-    id: "s2-hipaa-fib",
+    id: "s2-hipaa-not-shareable-fc",
     concept: "hipaa-shareable",
-    mode: "fib",
+    mode: "flashcard",
     payload: {
-      prompt: "Which piece of information about a patient should you NOT share with law enforcement?",
-      answer: "alcohol or drug information",
-      altAnswers: ["alcohol/drug information", "drug or alcohol use", "alcohol and drug use", "drugs and alcohol", "alcohol or drug use"],
+      front: "Which piece of information about a patient should you NOT share with law enforcement?",
+      back: "Alcohol or drug use information.",
     },
   },
 
   // --- Abuse handling ---
   {
-    id: "s2-abuse-seq",
+    id: "s2-abuse-multi",
     concept: "abuse-handling",
-    mode: "seq",
+    mode: "multi",
     payload: {
-      prompt: "Put the child/elder abuse response steps in order.",
-      steps: [
+      question: "Which of these are correct actions when responding to a suspected child/elder abuse case?",
+      choices: [
         "Alert dispatch to the situation",
         "Remain unbiased and nonjudgmental while providing care",
         "Try to convince the patient/guardian to go to the hospital",
         "Document exactly what each party said, in quotation marks",
         "Notify receiving hospital staff of your suspicions",
         "Contact DHS (Department of Human Services)",
+        "Confront the suspected abuser directly",
+        "Promise the patient you won't tell anyone",
       ],
+      correctIndices: [0, 1, 2, 3, 4, 5],
     },
   },
   {
