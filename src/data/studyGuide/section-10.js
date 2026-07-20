@@ -21,12 +21,21 @@ const items = [
 
   // --- Newborn ventilation/CPR thresholds ---
   {
-    id: "s10-newborn-normal-rr-fc",
+    id: "s10-newborn-need-resuscitation-fc",
     concept: "newborn-thresholds",
     mode: "flashcard",
     payload: {
-      front: "What's a normal newborn respiratory rate?",
-      back: "40–60 breaths/min — this is the reference range \"inadequate\" breathing is judged against.",
+      front: "Newborn assessment — how do you identify a possible need for resuscitation?",
+      back: "Ask: term gestation? Good tone? Crying? If either \"good tone\" or \"crying\" is no, begin resuscitation. Call for ALS as part of this initial check, not as an afterthought.",
+    },
+  },
+  {
+    id: "s10-newborn-ppv-rate-fc",
+    concept: "newborn-thresholds",
+    mode: "flashcard",
+    payload: {
+      front: "Newborn needing PPV — what rate do you ventilate at?",
+      back: "40–60 breaths/min (mnemonic: \"breathe-two-three-breathe-two-three\"). This is the ventilation delivery rate, not a normal newborn breathing rate reference.",
     },
   },
   {
@@ -112,7 +121,16 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "SUIDS (Sudden Unexpected Infant Death Syndrome) — what's your role?",
-      back: "Support the family — your role is emotional support, not investigation.",
+      back: "Support the family with compassion, not suspicion — it's not your job to diagnose SUIDS or investigate. If you're ever unsure whether to resuscitate, always resuscitate.",
+    },
+  },
+  {
+    id: "s10-suids-withhold-fc",
+    concept: "newborn-general-care",
+    mode: "flashcard",
+    payload: {
+      front: "SUIDS — when can you withhold resuscitation?",
+      back: "Only for rigor mortis (stiffening of the body after death) or lividity (bruising in dependent areas from pooled blood).",
     },
   },
 
@@ -123,7 +141,40 @@ const items = [
     mode: "flashcard",
     payload: {
       front: "When should you start CPR?",
-      back: "When the patient is unconscious and unresponsive with no normal breathing/pulse.",
+      back: "When primary assessment finds all 3: unresponsiveness, apnea (absence of breathing, including agonal breathing), and no pulse. Check the carotid pulse for no more than 10 seconds — no pulse found means begin compressions immediately.",
+    },
+  },
+  {
+    id: "s10-cpr-pediatric-pulse-fc",
+    concept: "cpr-start",
+    mode: "flashcard",
+    payload: {
+      front: "Checking for a pulse in an infant or small child — where, and what's different?",
+      back: "Check the brachial or femoral pulse — carotid is hard to assess in infants/small children. For infants specifically, HR <60 bpm is itself considered nonperfusing and an indication for compressions.",
+    },
+  },
+  {
+    id: "s10-cpr-clinical-picture-fc",
+    concept: "cpr-start",
+    mode: "flashcard",
+    payload: {
+      front: "Is a pediatric heart rate under 60 always an automatic reason to start compressions?",
+      back: "No — use the whole clinical picture. E.g. an unconscious, hypotensive 2-year-old with HR 58 needs ventilations now (add compressions if HR doesn't respond), but an alert 8-year-old with normal BP and HR 60 likely needs no immediate intervention, despite technically being under 60.",
+    },
+  },
+  {
+    id: "s10-cpr-pediatric-scenario-mc",
+    concept: "cpr-start",
+    mode: "mc",
+    payload: {
+      question: "An unconscious, hypotensive 2-year-old has a heart rate of 58 bpm. What's the priority?",
+      choices: [
+        "Begin ventilations now, add compressions if the heart rate doesn't respond",
+        "Do nothing — the heart rate is close enough to 60",
+        "Begin chest compressions only, no ventilations needed",
+        "Wait for ALS before intervening",
+      ],
+      correctIndex: 0,
     },
   },
 
