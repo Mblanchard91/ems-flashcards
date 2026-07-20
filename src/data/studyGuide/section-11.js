@@ -184,19 +184,36 @@ const items = [
 
   // --- PTSD/TBI ---
   {
-    id: "s11-ptsd-tbi-multi",
+    id: "s11-ptsd-combat-multi",
+    concept: "ptsd-tbi-overlap",
+    mode: "multi",
+    payload: {
+      question: "Which of these are combat-veteran-specific PTSD symptoms (not necessarily shared with TBI)?",
+      choices: [
+        "Guilt or shame",
+        "Avoidance of others",
+        "Depression",
+        "Paranoia",
+        "Hostility",
+        "Feeling they won't live much longer",
+        "Agitation",
+        "Anger",
+        "Improved concentration",
+      ],
+      correctIndices: [0, 1, 2, 3, 4, 5, 6, 7],
+    },
+  },
+  {
+    id: "s11-ptsd-tbi-overlap-multi",
     concept: "ptsd-tbi-overlap",
     mode: "multi",
     payload: {
       question: "Which of these are symptoms that overlap between PTSD and TBI?",
       choices: [
-        "Guilt or shame",
-        "Avoidance",
-        "Depression",
-        "Paranoia",
-        "Hostility",
         "Severe headaches",
+        "Drug/alcohol abuse",
         "Sleep disturbance",
+        "Depression",
         "Anxiety",
         "Anger",
         "Memory problems",
@@ -208,7 +225,7 @@ const items = [
         "Numbness",
         "Improved concentration",
       ],
-      correctIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      correctIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     },
   },
   {
